@@ -13,83 +13,53 @@
  *= require_tree .
  *= require_self
  */
- 
  body, html{
-  font-size: 100%;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Helvetica";
  }
- 
- body, html{
-  margin: 0;
+ /* logo display flex */
+ .logo-container{
+  display: flex;
+  height: 50px;
+  flex-direction: row;
+  justify-content: center;
+  background-color: gray;
+  align-items: center;
   padding: 0;
  }
-
- nav ul {
-  list-style-type: none;
-  padding: 0;
- }
  
- nav ul li a{
-  text-decoration: none;
-  color: #000;
+ .logo a img{
   display: block;
-  padding: .8rem 1rem;
+  height: 40px;
+  width: 300px;
+  line-height: 0;
+ }
+ 
+ /* nav */
+ nav ul {
+  list-style: none;
+  padding: 0;
+  background-color: gray;
+ }
+ 
+ nav ul li a {
+  color: #ddd;
+  text-decoration: none;
+  display: block;
   line-height: 1;
  }
  
- nav a:hover{
-  color: gray;
- }
- 
- nav ul li{
-  border-bottom: 1px;
- }
- 
- nav div:first-child h1{
+ nav ul .compass {
   line-height: 0;
   padding: .8rem 0rem;
   text-align: center;
  }
  
- nav div:first-child h1, nav ul{
-  margin: 0;
+ img {
+    height: 60px;
+    width: 100px;
  }
  
- nav div:first-child img{
-  height: 50px;
- }
  
- @media only screen and (min-width: 30em){
-  nav{
-   display: flex;
-   //justify-content: space-between;
-   align-items: center;
-  }
-  
-  nav ul{
-   display: flex;
-   align-items: center;
-  }
-  
-  nav div:first-child h1{
-   padding: 0;
-   margin: 0 1rem;
-  }
-  
-  nav div:first-child img{
-   height: 100px;
-  }
-  
-  nav ul li a{
-   padding: 1.2rem 1rem;
-  }
-  
-  nav ul li{
-   border-bottom: none;
-   flex: 1 0 auto;
-  }
-
- }
 
 
 
