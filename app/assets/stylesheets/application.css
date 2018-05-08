@@ -13,16 +13,116 @@
  *= require_tree .
  *= require_self
  */
- body, html{
-  font-family: "Helvetica";
+ html, header, footer, body, nav, div, img, a, ul, li, h1, h2{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
  }
+ 
+ *{box-sizing: border-box;}
+ 
+ html{
+  font-size: 14px;
+ }
+ 
+ body {
+  width: 80%;
+  margin: 0 auto;
+  color: #444;
+  //border: 1px solid #ccc;
+  font-family: "Sans-seriff";
+ }
+ 
+ a:link, a:visited{
+  color: #555;
+  font-weight: 700;
+  transition: .2s color ease-in-out;
+ }
+ 
+ a:hover, a:active{
+  color: #888;
+ }
+ 
+ .toggle-menu{
+  display: none;
+ }
+ 
+ header{
+  margin: .1rem 0;
+  //background-color: gray;
+ }
+ 
+ .site-title img{
+  width: 100px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-filter: grayscale(90%);
+  -moz-filter: grayscale(90%);
+  -filter: grayscale(90%);
+ }
+ 
+ .nav-list{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+ }
+ 
+ .nav-list>li{
+  position: relative;
+ }
+ 
+ .nav-list>li:not(.has-logo):a{
+  text-tranform: uppercase;
+  display: block;
+  padding: 1rem;
+ }
+ 
+ .nav-list ul{
+  position: absolute;
+  z-index: 1010;
+  background-color: #fff;
+  line-height: 2rem;
+  left: -9999px;
+ }
+ 
+ .nav-list ul a{
+  font-weight: normal;
+  display: block;
+  padding: .5rem 1rem;
+ }
+ 
+ .nav-list > li:hover a + ul{
+  left: 0;
+  top: 100%;
+ }
+ 
+ .mobile-display{
+  display: none;
+ }
+ 
+ @media only screen and (max-width: 58.75rem){
+  html{
+   font-size: 13px;
+  }
+   body{
+   width: 80%;
+  }
+  
+  .mobile-display{
+   display: block;
+   margin: 0 auto;
+  }
+ }
+
  /* logo display flex */
  .logo-container{
   display: flex;
   height: 50px;
   flex-direction: row;
   justify-content: center;
-  background-color: gray;
   align-items: center;
   padding: 0;
  }
@@ -32,32 +132,24 @@
   height: 40px;
   width: 300px;
   line-height: 0;
- }
- 
- /* nav */
- nav ul {
-  list-style: none;
   padding: 0;
-  background-color: gray;
  }
  
- nav ul li a {
-  color: #ddd;
-  text-decoration: none;
-  display: block;
-  line-height: 1;
+ .main-photo-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  
- nav ul .compass {
-  line-height: 0;
-  padding: .8rem 0rem;
-  text-align: center;
+ .main-photo-left img{
+  height: 500px;
  }
  
- img {
-    height: 60px;
-    width: 100px;
+ .shopping-cart img{
+  height: 20px;
  }
+ 
+ 
  
  
 
