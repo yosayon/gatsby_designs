@@ -1,15 +1,25 @@
 
 <div class="new-form-container">
-<%= form_for @user do |f| %>
-<p><%= f.label :name %>
-<%= f.text_field :name %>
-</p>
-<p><%= f.label :email %>
-<%= f.text_field :email %>
-</p>
-<p><%= f.label :password %>
-<%= f.password_field :password %>
-</p>
-<%= f.submit %>
+<%= form_for @user, :html =>{:class => "new-form"} do |f| %>
+<ul>
+ 
+ <li>
+  <h2>SIGN IN</h2>
+ </li>
+ 
+ <li>
+   <%= f.label :email %>
+   <%= f.text_field :email %>
+ </li>
+ 
+ <li>
+   <%= f.label :password %>
+   <%= f.password_field :password %>
+ </li>
+ 
+  <%= f.submit "Sign in" %>
+ </ul>
+ 
 <% end %>
+
 </div>
