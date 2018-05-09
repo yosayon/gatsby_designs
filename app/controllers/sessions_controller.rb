@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
    user.password = SecureRandom.hex
    end
    session[:user_id] = user.try(:id)
-    render 'statics/home'
+    redirect_to :root
   end
  
  def new
