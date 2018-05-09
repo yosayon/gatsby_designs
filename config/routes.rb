@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   #resources :users
    root 'statics#home'
    
-   resources :users
-   
+   get '/login', :to => 'sessions#new'
+   post '/login', :to => 'sessions#create'
+   get '/signup', :to => 'users#new'
+   post '/signup', :to => 'sessions#create'
+   get '/auth/facebook/callback' => 'sessions#create'
+   get 'logout' => 'sessions#destroy'
 end
