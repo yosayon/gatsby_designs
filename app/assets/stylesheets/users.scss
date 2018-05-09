@@ -2,33 +2,5 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.new-form-container{
- display: flex;
- justify-content: center;
- align-items: center;
-}
 
-*:focus {outline: none;}
-
-.new-form h2, label{
- font-family: Georgia;
-}
-
-.new-form ul{
- width: 750px;
- list-style-type: none;
- list-style-position: outside;
- margin: 0px;
- padding: 0px;
-}
-
-.new-form li{
- padding: 12px;
- border-bottom: 1px solid #eee;
- position: relative;
-}
-
-.new-form li:first-child, .new-form li:last-child {
- border-bottom: 1px solid #777;
-}
 
