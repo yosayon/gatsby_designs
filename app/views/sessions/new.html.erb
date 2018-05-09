@@ -2,14 +2,8 @@
  <%= form_for @user, url: login_path do |f| %>
  <ul>
   <li>
-   <h2>CREATE ACCOUNT</h2>
+   <h2>SIGN IN</h2>
   </li>
-  
- <li>
-  <%= f.label :name %>
-  </br>
-  <%= f.text_field :name %>
- </li>
  
  <li>
    <%= f.label :email %>
@@ -22,24 +16,20 @@
    </br>
    <%= f.password_field :password %>
  </li>
- 
- <li>
-  <%= f.label :password_confirmation %>
-  </br>
-  <%= f.password_field :password_confirmation %>
- </li>
 
  <li>
    <%= f.submit "SIGN IN" %>
  </li>
  
  <li>
-   <p>I have an account</p>
-   <%= link_to "LOGIN", login_path %>
+   <p>I'm new</p>
+   <%= link_to "SIGNUP", signup_path %>
+ </li>
+ <li>
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
  </li>
  
  </ul>
 <% end %>
 
 </div>
-
