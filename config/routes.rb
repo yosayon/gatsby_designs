@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   #resources :users
    root 'statics#home'
    
+   resources :users
    
 end
