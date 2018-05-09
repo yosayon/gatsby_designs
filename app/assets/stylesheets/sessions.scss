@@ -1,0 +1,32 @@
+.new-form-container{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ max-width: 400px;
+ margin: 50px auto;
+}
+
+*:focus {outline: none;}
+
+.new_user h2, label{
+ font-family: Georgia;
+}
+
+.new_user ul{
+ width: 750px;
+ list-style-type: none;
+ list-style-position: outside;
+ margin: 0px;
+ padding: 12px 40px 12px 20px;
+ color: #676f78;
+ width: 100%;
+ border: 1px solid;
+}
+
+.new_user ul li{
+ padding: 12px;
+ border-bottom: 1px solid #eee;
+ position: relative;
+}
+
+    
