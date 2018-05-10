@@ -1,33 +1,43 @@
+
 <div class="new-form-container">
  <%= form_for @user, url: signup_path do |f| %>
+ 
+ <div id="error_explanation">
+  <% if @user.errors.any? %>
+   <h2>There were errors</h2>
+  </div>
+ <% end %>
+  
  <ul>
   <li>
-   <h2>CREATE ACCOUNT</h2>
+   <h3>CREATE ACCOUNT</h3>
   </li>
-  
- <li>
-  <%= f.label :name %>
-  </br>
-  <%= f.text_field :name %>
- </li>
- 
- <li>
+
+<div class="field <%= ' field_with_errors' if @user.errors[:name].any? %>">
+   <%= f.label :name %>
+  <li>
+   <%= f.text_field :name %>
+  </li>
+  <h5><%= @user.errors[:name][0] %></h5>
+</div>
+
+<div class="field <%= ' field_with_errors' if @user.errors[:email].any? %>"> 
    <%= f.label :email %>
-   </br>
+ <li>
    <%= f.text_field :email %>
  </li>
- 
- <li>
+ <h5><%= @user.errors[:email][0] %></h5>
+</div>
+
+<div class="field <%= ' field_with_errors' if @user.errors[:password].any? %>">
    <%= f.label :password %>
-   </br>
-   <%= f.password_field :password %>
- </li>
- 
- <li>
-  <%= f.label :password_confirmation %>
-  </br>
-  <%= f.password_field :password_confirmation %>
- </li>
+  <li>
+    <%= f.password_field :password %>
+  </li>
+  <h5><%= @user.errors[:password][0] %></h5>
+ </div>
+
+</div>
 
  <li>
    <%= f.submit %>
