@@ -1,12 +1,19 @@
 class SessionsController < ApplicationController
+ 
   def create
-   user = User.find_or_create_by(:id => auth['uid']) do |user|
-   user.name = auth['info']['name']
-   user.email = auth['info']['email']
-   user.password = SecureRandom.hex
+   if auth
+    user = User.find_or_create_by_omniauth(auth)
+    session[:user_id] = user.try(:id)
+    redirect_to root_path
+   else
+    user = User.find_by(:email => params[:email])
+    if user && user.authenticate(params[:password])
+     session[:user_id] = user.id
+     redirect_to root_path
+    else
+     redirect_to '/login'
+    end
    end
-   session[:user_id] = user.try(:id)
-    redirect_to :root
   end
  
  def new
@@ -23,4 +30,8 @@ class SessionsController < ApplicationController
  def auth
   request.env['omniauth.auth']
  end
+ 
+ def user_params
+  params.require(:users).permit(:id, :name, :email, :password)
+ end 
 end
