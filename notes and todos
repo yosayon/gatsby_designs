@@ -24,3 +24,8 @@ Validation:
 -password
 2. Validation errors show when a user does not input valid, required fields.
 3. User is redirected back to the form that is pre-populated
+
+Add Nested Resources for User
+1. A user can have many reviews and a review belongs to a user
+2. Add nested resource for a user to create a review for a product
+3. 
