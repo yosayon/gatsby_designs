@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- html, header, footer, body, nav, div, img, a, ul, li, h1, h2{
+ html, header,footer, body, nav, img, a, ul, li, h1, h2{
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -40,7 +40,7 @@
  }
  
  a:hover, a:active{
-  color: #888;
+  color: #999;
  }
  
  .toggle-menu{
@@ -148,6 +148,9 @@
   height: 20px;
  }
  
+ .footer-container p{
+  flex: 1;
+ }
  
  
  
