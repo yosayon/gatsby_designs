@@ -1,4 +1,26 @@
-user sees the homepage and selects on login
-user can sign in the normal way or sign in via facebook
-If user signs in via facebook, click on 'sign in via facebook'
-Use signs in with facebook and is presented with the homepage. 
+Option 1: User signs on via facebook
+1. User visits webpage
+2. User clicks on "Sign-in"
+3. User is directed to FB to sign in
+4. FB sends webpage token
+5. Webpage sends FB back the token
+6. FB confirms that we received the token and sends user data
+7. We grab the user data and find or create a new user based on that data
+8. User is signed in and presented with the homepage along with their name on the right corner
+
+Option 2: User opts out of signing in via Facebook and creates an account with our webpage
+1. User visits webpage
+2. User clicks on "Create Account"
+3. User is directed to the a form to enter their name, email, password.
+4. User enters their information and is presented with the homepage.
+
+Option 3: user already has an account with us and signs in
+1. user navigates to sign in page and signs in
+
+Validation:
+1. User cannot create an account without:
+-name
+-email
+-password
+2. Validation errors show when a user does not input valid, required fields.
+3. User is redirected back to the form that is pre-populated
