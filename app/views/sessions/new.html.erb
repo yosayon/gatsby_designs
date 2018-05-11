@@ -1,30 +1,27 @@
 <div class="new-form-container">
  <%= form_for @user, url: login_path do |f| %>
  <ul>
+  <% if flash[:message] %>
+  <h3 id="flash-message"><%= flash[:message] %></h3>
+  <% end %>
+  
   <li>
-   <h2>SIGN IN</h2>
+   <h3>SIGN IN</h3>
   </li>
   
+  <%= render 'errors/error_explanation' %>
+  
+  <%= render 'errors/email_password' %>
+  
  <li>
-   <%= f.label :email %>
-   </br>
-   <%= f.text_field :email %>
+   <%= f.submit "SIGNIN" %>
  </li>
  
  <li>
-   <%= f.label :password %>
-   </br>
-   <%= f.password_field :password %>
- </li>
-
- <li>
-   <%= f.submit "SIGN IN" %>
+   <p><%= link_to "SIGNUP", signup_path %></p>
+   <p> or </p>
  </li>
  
- <li>
-   <p>I'm new</p>
-   <%= link_to "SIGNUP", signup_path %>
- </li>
  <li>
   <%= link_to('Log in with Facebook!', '/auth/facebook') %>
  </li>
