@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   #resources :reviews
   #resources :orders
-  #resources :carts
   #resources :line_items
   #resources :users
    root 'statics#home'
@@ -14,4 +13,5 @@ Rails.application.routes.draw do
    get 'logout' => 'sessions#destroy'
    
    resources :products
+   resources :carts, :only => [:show, :edit]
 end
