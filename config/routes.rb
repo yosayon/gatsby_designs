@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   #resources :orders
   #resources :carts
   #resources :line_items
-  #resources :products
   #resources :users
    root 'statics#home'
    
@@ -13,4 +12,6 @@ Rails.application.routes.draw do
    post '/signup', :to => 'users#create'
    get '/auth/facebook/callback' => 'sessions#create'
    get 'logout' => 'sessions#destroy'
+   
+   resources :products
 end
