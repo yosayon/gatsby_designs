@@ -1,21 +1,12 @@
 <div class="products-container">
  
- <div class="images-container">
-  <div><img src="/products/andrea.jpg"></div>
-  <div><img src="/products/asinine.jpg"></div>
-  <div><img src="/products/befrank.jpg"></div>
-  <div><img src="/products/brokenjoe.jpg"></div>
-  <div><img src="/products/common.jpg"></div>
-  <div><img src="/products/dave.jpg"></div>
-  <div><img src="/products/glasses1.jpg"></div>
-  <div><img src="/products/glasses2.jpg"></div>
-  <div><img src="/products/glasses3.jpg"></div>
-  <div><img src="/products/glasses4.jpg"></div>
-  <div><img src="/products/handmedowns.jpg"></div>
-  <div><img src="/products/karma.jpg"></div>
-  <div><img src="/products/lust.jpg"></div>
-  <div><img src="/products/question.jpg"></div>
-  <div><img src="/products/scotty.jpg"></div>
- </div>
-  
+ <% @products.each do |product| %>
+  <div class="product">
+   <div class="product-content">
+     <div class="image"><a href="/product_path(<%= product %>)"><img src="/products/<%=product.slugify%>.jpg"></a></div>
+     <div class="name"><%= product.name %></div>
+     <div class="price"><%= product.price.floor %></div>
+   </div>
+  </div>
+  <% end %>
 </div>
