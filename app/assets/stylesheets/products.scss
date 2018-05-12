@@ -5,18 +5,38 @@
 
 .products-container {
  display: flex;
- justify-content: center;
+ justify-content: space-around;
+ align-items: center;
  width: 1000px;
-}
-
-.images-container{
- display: flex;
  flex-wrap: wrap;
 }
 
-
-
-.images-container div img{
- height: 100px;
- margin: 15px;
+.product{
+ display: flex;
 }
+
+.product-content{
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+}
+
+.product img{
+ height: 150px;
+}
+
+.image:hover {
+ background-color: lightgray;
+}
+
+.name, .price{
+ align-self: center;
+}
+
+
+
+
+
+
+
+
