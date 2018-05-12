@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+/* products#index page css */
 .products-container {
  display: flex;
  justify-content: space-around;
@@ -29,14 +29,30 @@
  background-color: lightgray;
 }
 
-.name, .price{
+.name, .price, .add-cart{
  align-self: center;
 }
 
+/* products#show page css */
 
+.image-enlarged img{
+ height: 250px;
+}
 
+.add-cart{
+ margin-top: 20px;
+ border: 1px solid gray;
+ padding: 2px;
+ box-shadow: 2px 2px;
+}
 
+.add-cart:hover{
+ border: 2px solid gray;
+}
 
+.image-enlarged:hover{
+ opacity: 0.5;
+}
 
 
 
