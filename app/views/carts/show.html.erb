@@ -4,11 +4,12 @@
   <% current_user.cart.line_items.each do |line_item| %>
      <div class="image-shrunk"><img src="<%= line_item.product.picture %>">
       <div class="product-name"><%= line_item.product.name %></div>
-      <div class="product-price"><%= line_item.product.price %></div>
+      <div class="product-price"><%= line_item.product.price.floor %></div>
       <div class="quantity"><%= line_item.quantity %></div>
      </div>
  <% end %>
- <p>Total:</p>
+ 
+
  
  <%= button_to "Check out", user_cart_path(current_user, current_user.current_cart), :method => "patch" %>
 </div>
