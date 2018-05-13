@@ -9,6 +9,6 @@ class Order < ApplicationRecord
  def total
   prices = []
   self.line_items.each{|line_item| prices << line_item.product.price}
-  @total = prices.reduce(:+).floor
+  @total = (prices.reduce(:+)).floor
  end
 end
