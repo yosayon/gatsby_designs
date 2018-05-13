@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   #resources :reviews
   #resources :orders
-  #resources :line_items
   #resources :users
    root 'statics#home'
+   get '/order', :to => 'statics#thank_you'
    
    get '/login', :to => 'sessions#new'
    post '/login', :to => 'sessions#create'
@@ -13,5 +13,19 @@ Rails.application.routes.draw do
    get 'logout' => 'sessions#destroy'
    
    resources :products
-   resources :carts, :only => [:show, :edit]
+   
+   resources :users, :only => [:show] do 
+    resources :carts, :only => [:show, :update]
+   end
+   
+   resources :users, :only => [:show] do
+    resources :orders, :only => [:show, :index]
+   end
+   
+   resources :products, :only => [:show] do
+    resources :line_items, :only => [:create]
+   end
+   
+   
+   
 end
