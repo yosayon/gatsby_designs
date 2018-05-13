@@ -4,7 +4,7 @@
      <div class="image-enlarged"><a href=<%= product_path(@product) %>><img src="/products/<%= @product.slugify %>.jpg"></a></div>
      <div class="name"><%= @product.name %></div>
      <div class="price"><%= @product.price.floor %></div>
-     <div class="add-cart"><%= link_to "Add to Cart", "#" %></div>
+     <div class="add-cart"><%= button_to "Add to Cart", product_line_items_path(@product) %></div>
    </div>
   </div>
 </div>
