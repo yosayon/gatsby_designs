@@ -9,8 +9,8 @@
      </div>
  <% end %>
  
-
+<p>Total: <%= current_cart.total %></p>
  
- <%= button_to "Check out", user_cart_path(current_user, current_user.current_cart), :method => "patch" %>
+ <%= button_to "Check out", user_cart_path(current_user, current_cart), :method => "patch" %>
 </div>
 
