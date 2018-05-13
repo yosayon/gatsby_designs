@@ -1,4 +1,4 @@
-Option 1: User signs on via facebook
+Option 1: User signs on via facebook - done
 1. User visits webpage
 2. User clicks on "Sign-in"
 3. User is directed to FB to sign in
@@ -8,26 +8,56 @@ Option 1: User signs on via facebook
 7. We grab the user data and find or create a new user based on that data
 8. User is signed in and presented with the homepage along with their name on the right corner
 
-Option 2: User opts out of signing in via Facebook and creates an account with our webpage
+Option 2: User opts out of signing in via Facebook and creates an account with our webpage - done
 1. User visits webpage
 2. User clicks on "Create Account"
 3. User is directed to the a form to enter their name, email, password.
 4. User enters their information and is presented with the homepage.
 
-Option 3: user already has an account with us and signs in
+Option 3: user already has an account with us and signs in - done
 1. user navigates to sign in page and signs in
 
-Validation:
+Validation for signup/signin - done
 1. User cannot create an account without:
 -name
 -email
 -password
-2. Validation errors show when a user does not input valid, required fields.
+2. Validation errors show when a user does not input valid, required fields
 3. User is redirected back to the form that is pre-populated
 
-1. Clean up unused code
+Clean up unused code - do this last
 
 Add Nested Resources for User
-1. A user can have many reviews and a review belongs to a user
-2. Add nested resource for a user to create a review for a product
-3. 
+1. A user can have many reviews and a review belongs to a user - do this last
+2. Add nested resource for a user to create a review for a product - do this last
+
+Products - done
+Add products onto products table
+Add routes for products
+Add pictures onto products#index page
+Addname and price onto products page
+Each product should link to it's individual products#show page
+
+Cart - done
+a user can add a product to their cart
+A product has many line-items
+A line-item belongs to a product
+When user clicks on "add to cart" it should create a new line-item with the product inside that line item in the user's cart show page
+create cart routes - cart is nested under user
+create cart show page
+create cart edit page - implement last
+
+Order
+When a user checks out, the cart line items are removed 
+When a user checks out they are brought to the thank you page
+When a user checks out they can click on the order link on the thank you page to take them to the orders#show page
+
+User
+When a user clicks on their name, it will show a link to view all of their orders
+
+
+Next:
+1. Figure out why orders index is not displaying products per order. It has something to do with calling "current_order" which is creating a new order.
+2. Add current_order to application class and see if that will fix the issue.
+
+
