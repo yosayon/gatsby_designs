@@ -1,0 +1,15 @@
+<div class="orders-container">
+ <h3>Order# <%= current_user.current_order.id %></h3>
+
+  <% current_user.current_order.line_items.each do |line_item| %>
+     <div class="image-shrunk"><img src="<%= line_item.product.picture %>">
+      <div class="product-name"><%= line_item.product.name %></div>
+      <div class="product-price"><%= line_item.product.price %></div>
+      <div class="quantity"><%= line_item.quantity %></div>
+     </div>
+ <% end %>
+ <p>Total:</p>
+ <p>This order was processed on <%= current_user.current_order.updated_at %></p>
+ <p><%= link_to "View all orders", user_orders_path(current_user)%></p>
+ 
+</div>
