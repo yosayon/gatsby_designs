@@ -28,13 +28,11 @@ class User < ApplicationRecord
    
   def current_order
    @current_order = self.orders.find{|order| order.checkout == false}
-   if @current_order.nil?
-    @current_order = self.orders.last
-    if @current_order.nil?
-     @current_order = self.orders.create
-    end
-   end
-   @current_order
+   @current_order.nil? ? new_order : @current_order
+  end
+  
+  def new_order
+   @current_order = self.orders.create
   end
   
   def check_out_order
