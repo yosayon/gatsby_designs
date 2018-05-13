@@ -27,7 +27,11 @@
      <%= show_name_if_signed_in %>
     <li>
      <p class="shopping-cart">
-      <a href="#"><img src="/shopping_cart.jpeg"></a>
+      <% if current_user %>
+       <a href=<%= user_cart_path(current_user, current_user.current_cart) %>><img src="/shopping_cart.jpeg"></a>
+      <% else %>
+      <a href="/login"><img src="/shopping_cart.jpeg"></a>
+      <% end %>
      </p>
     </li>
       
