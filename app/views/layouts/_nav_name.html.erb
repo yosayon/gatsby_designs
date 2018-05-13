@@ -1,3 +1,4 @@
 <li>
-  <%= current_user.name %><a href="/logout">(logout)</a>
+  <a href=<%= user_path(current_user) %>><%= current_user.name %></a>
+  <a href="/logout">(logout)</a>
 </li>
