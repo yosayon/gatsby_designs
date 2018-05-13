@@ -6,7 +6,7 @@ class CartsController < ApplicationController
  def update
   @user = User.find(params[:user_id])
   @user.check_out_order
-  @user.current_order.check_out_order
+  current_order.check_out_order
   redirect_to order_complete_path
  end
  
