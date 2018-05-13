@@ -61,3 +61,6 @@ Next:
 2. Add current_order to application class and see if that will fix the issue.
 
 
+clear all data and start over.
+add order total
+add cart edits (increase, decrease quantity, and delete from cart buttons/links
