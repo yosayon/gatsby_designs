@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
   current_user != nil
  end
  
+ def current_cart
+  current_user.current_cart if logged_in?
+ end
+ 
+ def current_order
+  current_user.current_order if logged_in?
+ end
+ 
 end
