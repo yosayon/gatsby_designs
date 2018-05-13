@@ -1,2 +1,1 @@
-<h1>Thank you for your order! Your order number is 
-<a href= <%= user_order_path(current_user, current_user.current_order) %>> <%= current_user.current_order.id %></a> </h1>
+<h1>Thank you for your order! <a href=<%= user_order_path(current_user, Order.last)%>> Click here to view your order </h1>
