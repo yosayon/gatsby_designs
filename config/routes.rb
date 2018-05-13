@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #resources :orders
   #resources :users
    root 'statics#home'
-   get '/order', :to => 'statics#thank_you'
+   get '/order_complete', :to => 'orders#thank_you'
    
    get '/login', :to => 'sessions#new'
    post '/login', :to => 'sessions#create'
@@ -25,7 +25,5 @@ Rails.application.routes.draw do
    resources :products, :only => [:show] do
     resources :line_items, :only => [:create]
    end
-   
-   
    
 end
