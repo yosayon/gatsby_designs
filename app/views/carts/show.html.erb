@@ -1,11 +1,14 @@
 <div class="carts-container">
  <h3>Shopping Cart</h3>
 
-  <% current_user.cart.line_items.each do |line_item| %>
+  <% current_cart.line_items.each do |line_item| %>
      <div class="image-shrunk"><img src="<%= line_item.product.picture %>">
       <div class="product-name"><%= line_item.product.name %></div>
       <div class="product-price"><%= line_item.product.price.floor %></div>
-      <div class="quantity"><%= line_item.quantity %></div>
+      <div class="quantity">Quantity: <%= line_item.quantity %></div>
+      <div class="add_quantity"><%= button_to " + ", user_cart_path, :method => "patch" %></div>
+      <div class="add_quantity"><%= button_to " - ", user_cart_path, :method => "patch" %></div>
+      <div class="add_quantity"><%= button_to "Delete from cart", user_cart_path(current_user, current_cart), :method => "delete"  %></div>
      </div>
  <% end %>
  
