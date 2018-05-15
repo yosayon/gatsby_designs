@@ -6,4 +6,6 @@ class Product < ApplicationRecord
   name.downcase.strip.gsub(' ', '')
  end
  
+
+ 
 end
