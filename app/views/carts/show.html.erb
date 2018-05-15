@@ -5,10 +5,10 @@
      <div class="image-shrunk"><img src="<%= line_item.product.picture %>">
       <div class="product-name"><%= line_item.product.name %></div>
       <div class="product-price"><%= line_item.product.price.floor %></div>
-      <div class="quantity">Quantity: <%= line_item.quantity %></div>
       <div class="add_quantity"><%= button_to " + ", product_line_items_path(line_item.product, line_item) %></div>
-      <div class="add_quantity"><%= button_to " - ", product_line_item_path(line_item.product, line_item), :method => "patch" %></div>
-      <div class="add_quantity"><%= button_to "Delete from cart", product_line_item_path(line_item.product, line_item), :method => "delete" %></div>
+      <div class="quantity"><%= line_item.quantity %></div>
+      <div class="decrease_quantity"><%= button_to " - ", product_line_item_path(line_item.product, line_item), :method => "patch" %></div>
+      <div class="delete_from_cart"><%= button_to "Delete from cart", product_line_item_path(line_item.product, line_item), :method => "delete" %></div>
      </div>
  <% end %>
  
