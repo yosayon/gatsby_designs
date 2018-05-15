@@ -5,6 +5,7 @@
      <div class="name"><%= @product.name %></div>
      <div class="price"><%= @product.price.floor %></div>
      <div class="add-cart"><%= button_to "Add to Cart", product_line_items_path(@product) %></div>
+     <div class="add-cart"><%= button_to "Product Reviews", product_reviews_path(@product)%></div>
    </div>
   </div>
 </div>
