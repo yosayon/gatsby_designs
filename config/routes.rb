@@ -15,9 +15,9 @@ Rails.application.routes.draw do
    resources :products
    
    resources :users, :only => [:show] do 
-    resources :carts, :only => [:show, :update]
+    resources :carts, :only => [:show, :update, :destroy, :edit]
    end
-   
+
    resources :users, :only => [:show] do
     resources :orders, :only => [:show, :index]
    end
