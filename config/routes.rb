@@ -15,7 +15,7 @@ Rails.application.routes.draw do
    resources :products
    
    resources :users, :only => [:show] do 
-    resources :carts, :only => [:show, :update, :destroy, :edit]
+    resources :carts, :only => [:show, :update]
    end
 
    resources :users, :only => [:show] do
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
    end
    
    resources :products, :only => [:show] do
-    resources :line_items, :only => [:create]
+    resources :line_items, :only => [:create, :update, :destroy]
    end
    
 end
