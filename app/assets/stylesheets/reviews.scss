@@ -1,3 +1,14 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.review-container{
+ height: 250px;
+ width: 50%;
+ display: flex;
+}
+
+.review-container h2{
+ margin-left: 15px;
+}
+
