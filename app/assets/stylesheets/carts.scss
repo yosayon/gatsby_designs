@@ -15,11 +15,11 @@
  opacity: 0.5;
 }
 
-.quantity, .product-name, .product-price{
+.quantity, .product-name, .product-price, .add_quantity, .decrease_quantity, .delete_from_cart {
  align-self: center;
 }
 
-.product-price{
+.product-price, .add_quantity, .product_price, .decrease_quantity{
  margin-left: 20px;
 }
 
