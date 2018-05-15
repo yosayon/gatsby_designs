@@ -5,7 +5,7 @@ class Cart < ApplicationRecord
  
  def total
   prices = []
-  self.line_items.each{|line_item| prices << line_item.product.price}
+  self.line_items.each{|line_item| prices << line_item.product.price * line_item.quantity}
   @total = (prices.reduce(:+))
   if @total.nil?
    @total = 0
@@ -13,4 +13,6 @@ class Cart < ApplicationRecord
    @total.floor
   end
  end
+
+ 
 end
