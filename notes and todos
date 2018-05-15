@@ -47,20 +47,34 @@ create cart routes - cart is nested under user
 create cart show page
 create cart edit page - implement last
 
-Order
+Order- done
 When a user checks out, the cart line items are removed 
 When a user checks out they are brought to the thank you page
 When a user checks out they can click on the order link on the thank you page to take them to the orders#show page
 
 User
-When a user clicks on their name, it will show a link to view all of their orders
+When a user clicks on their name, it will show the user's homepage which should include:
+1. a link to view all of the user's orders (user_orders#index)
+2. a link to view the user's product reviews (user_reviews#index)
 
 
 Next:
-1. Figure out why orders index is not displaying products per order. It has something to do with calling "current_order" which is creating a new order.
-2. Add current_order to application class and see if that will fix the issue.
+1. Figure out why orders index is not displaying products per order. - fixed
+It has something to do with calling "current_order" which is creating a new order. - fixed
+2. Add current_order to application class and see if that will fix the issue. - fixed
 
 
 clear all data and start over.
-add order total
-add cart edits (increase, decrease quantity, and delete from cart buttons/links
+add order total - done
+add cart edits (increase, decrease quantity, and delete from cart buttons/links - done
+
+figure out how to create a line item if the product that's being added to the cart is new - done
+figure out how to increase quantity of a line item if that line item already exists in the cart a line item - done
+already exists in a cart if the user had added the product into their cart. 
+
+I would look in line_item model to see where we can place all this logic. - done
+
+Add an option for a user to write a review for a product.
+
+Recreate Bugs:
+1. sign in, add item to cart, decrease quantity to zero, go to shop add another item to cart-- line_item is not in cart. 
