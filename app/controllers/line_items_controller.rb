@@ -1,8 +1,18 @@
 class LineItemsController < ApplicationController
  
  def create
-  line_item = LineItem.create(:product_id => params[:product_id], :cart_id => current_cart.id, :order_id => current_order.id)
+  @product = Product.find_by_id(params[:product_id])
+  if current_order.product_ids.include?(@product.id)
+   line_item = LineItem.find_by(:order_id => current_order.id, :product_id => @product.id)
+   line_item.add_quantity
+  else
+   line_item = LineItem.create(:product_id => @product.id, :cart_id => current_cart.id, :order_id => current_order.id, :quantity => 1)
+  end
   redirect_to user_cart_path(current_user, current_cart)
+ end
+ 
+ def update
+  
  end
  
  private
