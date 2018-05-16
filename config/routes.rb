@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   #resources :orders
   #resources :users
    root 'statics#home'
+   get '/about', :to => 'statics#about'
+   get '/contact', :to => 'statics#contact'
    get '/order_complete', :to => 'orders#thank_you'
+   
    
    get '/login', :to => 'sessions#new'
    post '/login', :to => 'sessions#create'
