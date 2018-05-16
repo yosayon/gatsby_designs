@@ -5,24 +5,14 @@
    <ul class="nav-list nav-open" id="nav">
     <li><a href="/">HOME</a></li>
     <li class="has-submenu"><a href="/products">SHOP</a>
-      <ul>
-        <li><a href="#">Most Popular</a></li>
-        <li><a href="#">Customizable</a></li>
-        <li><a href="#">New</a></li>
-      </ul>
      </li>
-     <li><a href="/">ABOUT</a></li>
+     <li><a href=<%= about_path %>>ABOUT</a></li>
     <li class="has-logo"><a href="/">
       <h2 class="site-title">
        <img src="/lg_compass.jpeg" alt="lostgenerationcompass">
       </h2>
     </a></li>
-    <li class="has-submenu"><a href="/">CONTACT</a>
-      <ul>
-       <li><a href="#">Email</a></li>
-       <li><a href="#">Phone</a></li>
-       <li><a href="#">Social Media</a></li>
-      </ul>
+    <li class="has-submenu"><a href=<%= contact_path %>>CONTACT</a>
      </li>
      <%= show_name_if_signed_in %>
     <li>
