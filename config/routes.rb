@@ -25,8 +25,5 @@ Rails.application.routes.draw do
    resources :products, :only => [:show] do
     resources :line_items, :only => [:create, :update, :destroy]
    end
-   
-   resources :products, :only => [:show] do
-    resources :reviews
-   end
+ 
 end

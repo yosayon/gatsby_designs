@@ -74,7 +74,7 @@ already exists in a cart if the user had added the product into their cart.
 
 I would look in line_item model to see where we can place all this logic. - done
 
-Add an option for a user to write a review for a product.
-
 Recreate Bugs:
 1. sign in, add item to cart, decrease quantity to zero, go to shop add another item to cart-- line_item is not in cart. 
+
+Add an option for a user to write a review for a product.
