@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
    
   def current_order
-   @current_order = self.orders.find{|order| order.checkout == false}
+   @current_order = self.orders.find{|order| order.checkout == false} 
    @current_order.nil? ? new_order : @current_order
   end
   
@@ -37,4 +37,9 @@ class User < ApplicationRecord
   def check_out_order
    self.cart.line_items.delete_all
   end
+
+ def self.create_temporary_user
+  temp_user = User.create(:name => "temp_user", :email => "temp_user#{SecureRandom.hex(5)}@lostgeneration.com", :password => SecureRandom.hex(10))
+ end
+ 
 end
