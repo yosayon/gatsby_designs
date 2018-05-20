@@ -1,17 +1,18 @@
 class ProductsController < ApplicationController
- before_action :find_product!, :only => [:show]
+ before_action :get_current_url, :only => [:show]
  
  def index
   @products = Product.all
  end
  
  def show
+  @product = Product.find_by_id(params[:id])
  end
  
  private
  
- def find_product!
-  @product = Product.find(params[:id])
+ def get_current_url
+  current_url if !logged_in?
  end
- 
+
 end
