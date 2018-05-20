@@ -13,6 +13,6 @@ class Cart < ApplicationRecord
    @total.floor
   end
  end
-
+ 
  
 end
