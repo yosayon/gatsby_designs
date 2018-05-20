@@ -1,4 +1,7 @@
 class CartsController < ApplicationController
+ before_action :require_login, :only => [:update]
+ before_action :current_url, :only => [:show]
+ 
  
  def show
  end
@@ -10,7 +13,6 @@ class CartsController < ApplicationController
   redirect_to order_complete_path
  end
  
- 
  def destroy
  end
  
@@ -19,4 +21,5 @@ class CartsController < ApplicationController
  def cart_params
   params.require(:cart).permit(:user_id)
  end
+ 
 end
