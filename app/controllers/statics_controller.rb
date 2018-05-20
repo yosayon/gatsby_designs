@@ -4,7 +4,6 @@ class StaticsController < ApplicationController
  end
   
  def thank_you
-  raise params.inspect
  end
  
  def about
