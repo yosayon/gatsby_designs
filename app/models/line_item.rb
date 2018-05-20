@@ -11,5 +11,4 @@ class LineItem < ApplicationRecord
   self.update(:quantity => self.quantity - 1)
  end
  
- 
 end
