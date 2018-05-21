@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+ before_action :authenticate_user, :only => [:show, :update, :thank_you]
  
  def show
   @order = Order.find(params[:id])
@@ -8,7 +9,7 @@ class OrdersController < ApplicationController
  end
  
  def index
-  @orders = current_user.orders
+  @orders = current_user.checked_out_orders
  end
  
  private
