@@ -42,5 +42,4 @@ class User < ApplicationRecord
   User.create(:name => "temp_user", :email => "temp_user#{SecureRandom.hex(5)}@lostgeneration.com", :password => SecureRandom.hex(10))
  end
  
- 
 end
