@@ -42,4 +42,8 @@ class User < ApplicationRecord
   User.create(:name => "temp_user", :email => "temp_user#{SecureRandom.hex(5)}@lostgeneration.com", :password => SecureRandom.hex(10))
  end
  
+ def checked_out_orders
+  self.orders.all.where(:checkout => true)
+ end
+ 
 end
