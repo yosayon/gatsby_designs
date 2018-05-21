@@ -1,16 +1,19 @@
 class CartsController < ApplicationController
  before_action :require_login, :only => [:update]
- before_action :current_url, :only => [:show]
- 
  
  def show
  end
  
  def update
   @user = User.find(params[:user_id])
-  @user.check_out_order
-  current_order.check_out_order
-  redirect_to order_complete_path
+  if @user.cart.line_items.empty?
+   flash[:message] = "Cart cannot be empty for checkout"
+   render :show
+  else
+   @user.check_out_order
+   current_order.check_out_order
+   redirect_to order_complete_path
+  end
  end
  
  def destroy
@@ -21,5 +24,6 @@ class CartsController < ApplicationController
  def cart_params
   params.require(:cart).permit(:user_id)
  end
+
  
 end

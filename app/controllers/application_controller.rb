@@ -15,11 +15,7 @@ class ApplicationController < ActionController::Base
  end
  
  def current_order
-  if logged_in?
-   current_user.current_order
-  else 
-   temp_user.current_order
-  end
+  logged_in? ? current_user.current_order : temp_user.current_order
  end
  
  def require_login
@@ -29,7 +25,7 @@ class ApplicationController < ActionController::Base
  end
  
  def temp_user
-  session[:temp_id].nil? ? @temp_user ||= User.create_temporary_user : @temp_user ||= User.find(session[:temp_id]) 
+   @temp_user ||= User.find_by_id(session[:temp_id])
  end
  
  def session_user
@@ -40,12 +36,8 @@ class ApplicationController < ActionController::Base
   end
  end
  
- def current_url
-  #session[:current_url] = request.original_url
- end
- 
  def merge_cart_items
-  #raise temp_user.cart.line_items.inspect
+  current_cart.merge_cart_items_with(temp_user)
  end
- 
+
 end

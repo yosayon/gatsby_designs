@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+ before_action :find_session_user, :only => [:create, :update, :destroy]
  
  def create
   @product = Product.find_by_id(params[:product_id])
@@ -10,7 +11,7 @@ class LineItemsController < ApplicationController
     line_item = LineItem.create(:product_id => @product.id, :cart_id => current_cart.id, :order_id => current_order.id, :quantity => 1)
     redirect_to user_cart_path(session_user, current_cart)
    end
-  end
+ end
  
  def update
   @line_item = LineItem.find_by_id(params[:id])
@@ -32,6 +33,13 @@ class LineItemsController < ApplicationController
  
  def line_item_params
   params.require(:line_item).permit(:product_id, :cart_id, :quantity)
+ end
+ 
+ def find_session_user
+  if !logged_in? && session[:temp_id].nil?
+   user = User.create_temporary_user
+   session[:temp_id] = user.id
+  end
  end
  
 end

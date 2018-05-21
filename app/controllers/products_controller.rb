@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
- before_action :get_current_url, :only => [:show]
  
  def index
   @products = Product.all
@@ -11,8 +10,6 @@ class ProductsController < ApplicationController
  
  private
  
- def get_current_url
-  current_url if !logged_in?
- end
+ 
 
 end
