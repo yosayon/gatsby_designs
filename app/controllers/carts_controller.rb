@@ -15,10 +15,7 @@ class CartsController < ApplicationController
    redirect_to order_complete_path
   end
  end
- 
- def destroy
- end
- 
+
  private
  
  def cart_params
