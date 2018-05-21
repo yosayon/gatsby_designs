@@ -40,6 +40,8 @@ class ApplicationController < ActionController::Base
   current_cart.merge_cart_items_with(temp_user)
  end
  
+ private
+ 
  def find_session_user
   if !logged_in? && session[:temp_id].nil?
    user = User.create_temporary_user
@@ -55,5 +57,12 @@ class ApplicationController < ActionController::Base
    session.delete :temp_id
   end
  end
-
+ 
+ def authenticate_user
+  @user = User.find(params[:user_id])
+  if session_user && @user != session_user || session_user.nil?
+   render :file => "#{Rails.root}/public/422.html", :layout => false
+  end
+ end
+ 
 end
