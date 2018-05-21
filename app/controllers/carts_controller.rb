@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
  before_action :require_login, :only => [:update]
+ before_action :authenticate_user, :only => [:show, :update]
  
  def show
  end
