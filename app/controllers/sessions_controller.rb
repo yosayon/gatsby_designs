@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
- #before_action :
- after_action :purge_temp_user_data, :only => [:create]
+ after_action :purge_temp_user_data, :only => [:create], :if => :logged_in?
  
  def new
   @user = User.new
@@ -39,7 +38,5 @@ class SessionsController < ApplicationController
  def user_params
   params.require(:users).permit(:email, :password)
  end 
- 
-
 
 end

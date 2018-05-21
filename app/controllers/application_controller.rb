@@ -47,7 +47,6 @@ class ApplicationController < ActionController::Base
   end
  end
  
- 
  def purge_temp_user_data
   if session[:temp_id]
    User.find_by_id(session[:temp_id]).delete
