@@ -39,5 +39,12 @@ class ApplicationController < ActionController::Base
  def merge_cart_items
   current_cart.merge_cart_items_with(temp_user)
  end
+ 
+ def find_session_user
+  if !logged_in? && session[:temp_id].nil?
+   user = User.create_temporary_user
+   session[:temp_id] = user.id
+  end
+ end
 
 end
