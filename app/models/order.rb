@@ -16,9 +16,5 @@ class Order < ApplicationRecord
    @total.floor
   end
  end
- 
- def self.checked_out_orders
-  all.where(:checkout => true)
- end
   
 end
