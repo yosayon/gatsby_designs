@@ -1,4 +1,7 @@
 <div class="carts-container">
+ <% if flash[:message] %>
+  <%= flash[:message] %>
+ <% end %>
  <h3>Shopping Cart</h3>
 
   <% current_cart.line_items.each do |line_item| %>
@@ -13,7 +16,7 @@
  <% end %>
  
 <p>Total: <%= current_cart.total %></p>
- 
- <%= button_to "Check out", user_cart_path(session_user, current_cart), :method => "patch" %>
+ <%= button_to "Check out", user_cart_path(session_user, current_cart), :method => 'patch' %>
+
 </div>
 
