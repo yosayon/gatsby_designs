@@ -35,11 +35,4 @@ class LineItemsController < ApplicationController
   params.require(:line_item).permit(:product_id, :cart_id, :quantity)
  end
  
- def find_session_user
-  if !logged_in? && session[:temp_id].nil?
-   user = User.create_temporary_user
-   session[:temp_id] = user.id
-  end
- end
- 
 end
