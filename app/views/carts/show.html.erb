@@ -2,6 +2,7 @@
  <% if flash[:message] %>
   <%= flash[:message] %>
  <% end %>
+ 
  <h3>Shopping Cart</h3>
 
   <% current_cart.line_items.each do |line_item| %>
