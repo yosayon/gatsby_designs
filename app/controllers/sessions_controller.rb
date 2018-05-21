@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+ #before_action :
  after_action :purge_temp_user_data, :only => [:create]
  
  def new
@@ -25,7 +26,7 @@ class SessionsController < ApplicationController
  
  def destroy
   session.delete :user_id
-  session.delete :temp_id
+  #session.delete :temp_id
   redirect_to root_path
  end
  
@@ -39,14 +40,6 @@ class SessionsController < ApplicationController
   params.require(:users).permit(:email, :password)
  end 
  
- def purge_temp_user_data
-  if session[:temp_id]
-   User.find_by_id(session[:temp_id]).delete
-   Order.where(:user_id => session[:temp_id]).delete_all
-   Cart.where(:user_id => session[:temp_id]).delete_all
-   session.delete :temp_id
-  end
- end
 
 
 end
