@@ -13,7 +13,6 @@ Rails.application.routes.draw do
    post '/login', :to => 'sessions#create'
    get '/auth/facebook/callback' => 'sessions#create'
    get 'logout' => 'sessions#destroy'
-   #get '/login/from_checkout', :to => 'sessions#login_from_checkout'
  
  #users controller  
    get '/signup', :to => 'users#new'
