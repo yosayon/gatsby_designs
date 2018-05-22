@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
  def authenticate_user
   @user = User.find(params[:user_id])
   if session_user && @user != session_user || session_user.nil?
-   render :file => "#{Rails.root}/public/422.html", :layout => false
+  render :file => "#{Rails.root}/public/422.html", :layout => false
   end
  end
  

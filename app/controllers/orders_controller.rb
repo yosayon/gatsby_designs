@@ -1,11 +1,15 @@
 class OrdersController < ApplicationController
- before_action :authenticate_user, :only => [:show, :update, :thank_you]
+ before_action :authenticate_user, :only => [:show, :update]
+ 
  
  def show
   @order = Order.find(params[:id])
  end
  
  def thank_you
+  if !session_user
+   redirect_to login_path
+  end
  end
  
  def index
