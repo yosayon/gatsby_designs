@@ -1,4 +1,10 @@
 <li>
-  <div><a href=<%= user_orders_path(current_user) %>><%= current_user.name %></a></div>
-  <div><a href="/logout">(logout)</a></div>
+  <div><a href=<%= user_orders_path(session_user) %>><%= session_user.name %></a></div>
+  <div><a href=<%= logout_path %>>(logout)</a></div>
+</li>
+
+<li>
+ <p class="shopping-cart">
+  <a href=<%= user_cart_path(session_user, current_cart) %>><img src="/assets/navigation/shopping_cart.jpeg"></a>
+ </p>
 </li>

@@ -1,1 +1,11 @@
-<li><a href="/login">SIGNIN</a></li>
+<li><a href=<%= login_path %>>SIGNIN</a></li>
+
+<li>
+ <p class="shopping-cart">
+  <% if session_user %>
+   <a href=<%= user_cart_path(session_user, current_cart) %>><img src="/assets/navigation/shopping_cart.jpeg"></a>
+  <% else %>
+   <a href=<%= login_path %>><img src="/assets/navigation/shopping_cart.jpeg"></a>
+  <% end %>
+ </p>
+</li>
