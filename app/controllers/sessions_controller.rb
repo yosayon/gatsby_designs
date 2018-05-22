@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
    session.delete :temp_id
    redirect_to root_path
   else
-  render :file => "#{Rails.root}/public/422.html", :layout => false
+   render :file => "#{Rails.root}/public/422.html", :layout => false
   end
  end
  
