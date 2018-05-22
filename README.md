@@ -1,7 +1,9 @@
-# README
+# Lost Generation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A mock ecommerce website for an eyewear brand named after the 20th century artists of The Lost Generation!
+
+## Ruby Version ----> 2.3.3
+
 
 Things you may want to cover:
 
