@@ -2,9 +2,6 @@ class Order < ApplicationRecord
  has_many :line_items
  has_many :products, :through => :line_items
  
- def check_out_order
-  self.update(:checkout => true)
- end
  
  def total
   prices = []

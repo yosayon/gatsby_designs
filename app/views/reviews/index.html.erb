@@ -1,0 +1,15 @@
+<div class="products-container">
+ 
+ <% @reviews.each do |review| %>
+  <div class="product">
+   <div class="product-content">
+     <div class="overall_rating"><%= review.overall_rating %></div>
+     <div class="image"><a href=<%= product_path(product) %>><img src=<%= product.picture %>></a></div>
+     <div class="name"><%= review.product.name %></div>
+     <div class="price"><%= review.price.floor %></div>
+     <div class="title"><%= review.price.floor %></div>
+     <div class="comment"><%= review.price.floor %></div>
+   </div>
+  </div>
+  <% end %>
+</div>

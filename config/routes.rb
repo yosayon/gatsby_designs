@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
  #statics controller
    root 'statics#home'
    get '/about', :to => 'statics#about'
@@ -34,5 +34,15 @@ Rails.application.routes.draw do
    resources :products, :only => [:show] do
     resources :line_items, :only => [:create, :update, :destroy]
    end
+   
+  resources :users, :only => [:show] do
+   resources :reviews, :only => [:new, :create, :edit, :update, :show, :destroy, :index]
+  end
+   
+ resources :products, :only => [:show] do
+  resources :reviews, :only => [:index, :show]
+ end
+ 
+ resources :reviews
  
 end

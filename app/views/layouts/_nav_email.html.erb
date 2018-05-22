@@ -1,5 +1,5 @@
 <li>
-  <div><a href=<%= user_orders_path(session_user) %>><%= session_user.name %></a></div>
+  <div><a href=<%= user_orders_path(session_user) %>><div class="email"><%= session_user.email %></div></a></div>
   <div><a href=<%= logout_path %>>(logout)</a></div>
 </li>
 

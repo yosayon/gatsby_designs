@@ -3,7 +3,7 @@
  <% @products.each do |product| %>
   <div class="product">
    <div class="product-content">
-     <div class="image"><a href=<%= product_path(product) %>><img src=<%= product.picture %>></a></div>
+     <div class="image"><a href=<%= product_path(product) %>><img src="/assets/<%= product.picture %>"></a></div>
      <div class="name"><%= product.name %></div>
      <div class="price"><%= product.price.floor %></div>
    </div>

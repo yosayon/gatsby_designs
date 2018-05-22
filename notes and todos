@@ -169,3 +169,20 @@ is there is no session user then no one is logged in and the person is simply tr
 
 order does not show unless it's been checked out. - done
 
+confirmed_orders
+
+
+product.line_items.confirmed_orders
+
+Product.confirmed_orders
+
+through products
+/products/:id/reviews
+/products/popular ---> popular is the overall average rating of a product.
+
+/user/:id  ---> should should links to:
+1. /user/:id/orders
+2. /user/:id/order/:order_id
+3. /user/:id/reviews
+4. /user/:id/review/
+
