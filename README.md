@@ -1,6 +1,11 @@
 # Lost Generation
 
+### Description
+
 A mock ecommerce website for an eyewear brand named after the 20th century artists of The Lost Generation!
+Blog ----> https://wordpress.com/post/yosayonnyc.wordpress.com/59
+Youtube Video ----> 
+
 
 ### Ruby Version ----> 2.3.3
 
