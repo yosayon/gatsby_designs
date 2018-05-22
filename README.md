@@ -3,7 +3,11 @@
 ### Description
 
 A mock ecommerce website for an eyewear brand named after the 20th century artists of The Lost Generation!
-Blog ----> hhttps://yosayonnyc.wordpress.com/2018/05/22/my-first-ror-project-lost-generation/
+
+
+Blog ----> https://yosayonnyc.wordpress.com/2018/05/22/my-first-ror-project-lost-generation/
+
+
 Youtube Video ----> https://youtu.be/Usv_Ul8sV-s
 
 
