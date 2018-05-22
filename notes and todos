@@ -78,3 +78,94 @@ Recreate Bugs:
 1. sign in, add item to cart, decrease quantity to zero, go to shop add another item to cart-- line_item is not in cart. 
 
 Add an option for a user to write a review for a product.
+
+try to break the app.
+
+Validations:
+1. user cannot add an item to cart unless they are signed in
+2. finish blog and create video
+
+popular products 
+1. create a product class method that creates a product_count hash that counts each product purchased and how many times they were purchased
+2. 
+
+1. a user should be able to be redirected to their current_uri after being prompted to login_path
+2. a user cannot add item to cart unless they are signed in
+3. a user cannot view their cart unless they are signed in
+4. after a user creates a user account, they will be redirected back to the current_uri
+5. after a user logs in, they will be redirected back to the current_uri
+
+next steps:
+1. create a route login_from_checkout => sessions#login_from_checkout
+2. add merge_cart_items method in application controller
+
+
+I need  a helper method for the carts show page for the button to check out. If the user is not logged in => login from checkout
+
+
+Helper methods are for views
+Partials can b rendered depending on the conditions of the methods in helper methods!
+
+add a helper method in sessions controller to ask if the user is logging in from checkout
+if so, render the login_from_checkout path
+if not, render the regular login path!
+
+issue
+adding to cart is creating two temp users....why?
+add to cart redirects to product_line_items_path
+
+temp_user creation
+
+**fix the logging out with empty cart issue please
+
+Temp Users:
+temp user is first created if a user is not logged in AND when the temp user clicks on "add to cart"
+the session temp id will be created after the user clicks on the button. 
+a temp user's life span is from the time they add a product to cart - until a user logs in and checks out. 
+
+need to find a way to clear temp id if someone is signing in directly from the sign in page and not the checkout page.
+
+Next steps: Add validations to cart --> cannot check out if cart is empty
+
+use self.checkedoutorders from order for the index page
+
+scenario for when to delete a temp user:
+existing users in app
+no users signed on
+temp user adds something to cart
+temp user doesn't check out but instead signs in, temp user's cart should be deleted and temp user should be deleted
+
+1. add validations for when a temp user is signed in and when checked out, the temp user signs up instead of signing in. I found that when I do this, the cart items does not merge and the temp data is not purged. Place some validations into the user controller where a new user is created. 
+
+Where to find the session_user?
+1. in order to checkout you need to be signed in, so it's not in the carts controller, carts controller is require login
+2. sessions controller is where if the temp user actually signs in and has an account, the sessions#create will check if there is a temp_user cart and if so, it will merge those cart items and purge the temp user data which is what we want!
+3. What if a temp user checks out and there is no items in the cart? Add validations for this, it's currently only for signed in users.
+4. In the users controller, we need to merge mart items too if there is an active session[:temp_id]
+
+scenario for when to delete a temp user cart.
+if a user is scrolling through and adds item to cart, a temp user cart is created. If the user signs in not by check out, prompt the user to select whether or not they want to add items to their cart. - done! This is complete with the merge_cart_items if session[:temp_id] in the users and sessions create controller actions! waaahoooo!
+
+Try to break the app:
+
+
+
+yosa fb order 166 dave
+scott's open cart url => users/1685366171540670/carts/104 added andrea to cart order # 167
+
+yosa entered scott's open cart url and checked out. cart appeared empty and when checked out, it said cart cannot be empty. 
+signed in as scott and checked ordered items and found that order 167 was processed AND scott's cart still had andrea in cart! When I clicked on check out, the order was processed as order 167!? there is still only one order. 
+
+So we know that Yosa was able to checkout for scott even though we couldn't see any items in the cart and the cart said cannot check out with empty cart!
+
+authenticate user when:
+they navigate to their cart
+they add or edit their cart or delete their cart
+
+is a session user exists, then this just means you either have a current user who is logged in or a temp user
+and if the requested link's user ID does not match the session_user, then render the 422 error page - done
+
+is there is no session user then no one is logged in and the person is simply trying to request a url that they know they don't have access to. In this case, please redirect them to the same page. - done
+
+order does not show unless it's been checked out. - done
+
