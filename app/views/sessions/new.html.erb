@@ -9,9 +9,27 @@
    <h3>SIGN IN</h3>
   </li>
   
-  <%= render 'errors/error_explanation' %>
+ <div id="error_explanation">
+  <% if @user.errors.any? %>
+   <h2>There were errors</h2>
+ </div>
+  <% end %>
   
-  <%= render 'errors/email_password' %>
+<div class="field <%= ' field_with_errors' if @user.errors[:email].any? %>"> 
+   <%= label_tag :email %>
+ <li>
+   <%= text_field_tag :email %>
+ </li>
+ <h5><%= @user.errors[:email][0] %></h5>
+</div>
+
+<div class="field <%= ' field_with_errors' if @user.errors[:password].any? %>">
+   <%= label_tag :password %>
+  <li>
+    <%= password_field_tag :password %>
+  </li>
+  <h5><%= @user.errors[:password][0] %></h5>
+</div>
   
  <li>
    <%= f.submit "SIGNIN" %>

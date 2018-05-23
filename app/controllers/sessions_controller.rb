@@ -27,13 +27,13 @@ class SessionsController < ApplicationController
  end
  
  def destroy
-  if logged_in?
+  #if logged_in?
    session.delete :user_id
    session.delete :temp_id
    redirect_to root_path
-  else
-   render :file => "#{Rails.root}/public/422.html", :layout => false
-  end
+  #else
+  # render :file => "#{Rails.root}/public/422.html", :layout => false
+  #end
  end
  
  private

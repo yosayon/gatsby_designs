@@ -36,11 +36,11 @@ Rails.application.routes.draw do
    end
    
   resources :users, :only => [:show] do
-   resources :reviews, :only => [:new, :create, :edit, :update, :show, :destroy, :index]
+   resources :reviews, :only => [:edit, :update, :show, :destroy, :index]
   end
    
  resources :products, :only => [:show] do
-  resources :reviews, :only => [:index, :show]
+  resources :reviews, :only => [:new, :create, :index]
  end
  
  resources :reviews

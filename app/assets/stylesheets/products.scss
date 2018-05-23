@@ -29,7 +29,7 @@
  background-color: lightgray;
 }
 
-.name, .price, .add-cart{
+.name, .price, .buttons{
  align-self: center;
 }
 
@@ -39,12 +39,12 @@
  height: 250px;
 }
 
-.add-cart{
+.buttons{
  margin-top: 20px;
  padding: 2px;
 }
 
-.add-cart:hover{
+.buttons:hover{
  border: 2px solid gray;
 }
 

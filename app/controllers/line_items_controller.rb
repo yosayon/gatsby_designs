@@ -25,7 +25,7 @@ class LineItemsController < ApplicationController
  def destroy
   product = Product.find_by_id(params[:product_id])
   line_item = LineItem.find(params[:id])
-  product.line_items.delete(line_item)
+  product.line_items.destroy(line_item)
   redirect_to user_cart_path(session_user, current_cart)
  end
  

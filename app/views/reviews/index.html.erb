@@ -1,15 +1,13 @@
-<div class="products-container">
+<div class="carts-container">
+ 
+ <% if flash[:message] %>
+  <%= flash[:message] %>
+ <% end %>
  
  <% @reviews.each do |review| %>
-  <div class="product">
-   <div class="product-content">
-     <div class="overall_rating"><%= review.overall_rating %></div>
-     <div class="image"><a href=<%= product_path(product) %>><img src=<%= product.picture %>></a></div>
-     <div class="name"><%= review.product.name %></div>
-     <div class="price"><%= review.price.floor %></div>
-     <div class="title"><%= review.price.floor %></div>
-     <div class="comment"><%= review.price.floor %></div>
-   </div>
-  </div>
+   <%= render :partial => 'shared/product_picture', :locals => {:review => review} %>
+   <%= render :partial => 'shared/review', :locals => {:review => review} %>
   <% end %>
+  
+ <%= button_to "back", user_path(current_user), :method => 'get' %>
 </div>

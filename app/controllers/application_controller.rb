@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
  protect_from_forgery with: :exception
- helper_method :current_user, :logged_in?, :current_cart, :current_order, :session_user
+ helper_method :current_user, :logged_in?, :current_cart, :current_order, :session_user, :current_product
 
  def current_user
   @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -65,4 +65,8 @@ class ApplicationController < ActionController::Base
   end
  end
  
+ def current_product
+  @current_product ||= Product.find_by_id(session[:product_id])
+ end
+
 end

@@ -1,1 +1,8 @@
-<%= link_to "View my orders", user_orders_path(current_user) %>
+<div class="profile-container">
+ <div class="user_email"><h1><%= current_user.email %></h1></div>
+ 
+ <div class="button"> <%= button_to "View my orders", user_orders_path(current_user), :method => 'get' %> </div>
+
+ <div class="button"><%= button_to "View my reviews", user_reviews_path(current_user), :method => "get" %></div>
+ 
+ </div>

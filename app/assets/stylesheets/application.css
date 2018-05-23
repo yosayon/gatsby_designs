@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- html, header,footer, body, nav, img, a, ul, li, h1, h2{
+ html, header,body, nav, img, a, ul, li, h1, h2, h3{
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -148,7 +148,8 @@
   height: 20px;
  }
  
- .footer-container p{
+ .footer-container {
+  margin-top: 120px;
   flex: 1;
  }
 

@@ -1,12 +1,19 @@
 <div class="new-form-container">
  <%= form_for @user, url: signup_path do |f| %>
  <ul>
-   
+  <% if flash[:message] %>
+  <h3 id="flash-message"><%= flash[:message] %></h3>
+  <% end %>
+  
   <li>
-   <h3>CREATE ACCOUNT</h3>
+   <h3>SIGNUP</h3>
   </li>
   
-  <%= render 'errors/error_explanation' %>
+  <div id="error_explanation">
+  <% if @user.errors.any? %>
+   <h2>There were errors</h2>
+ </div>
+  <% end %>
  
  <div class="field <%= ' field_with_errors' if @user.errors[:email].any? %>"> 
    <%= f.label :email %>

@@ -1,0 +1,49 @@
+ <%= form_for review do |f| %>
+ <ul>
+   
+ <div id="error_explanation">
+  <% if review.errors.any? %>
+   <h2>There were errors</h2>
+ </div>
+  <% end %>
+  
+ <div class="field <%= ' field_with_errors' if review.errors[:title].any? %>"> 
+   <%= f.label :title %>
+  <li>
+   <%= f.text_field :title %>
+  </li>
+  <h5><%= review.errors[:title][0] %></h5>
+ </div>
+
+<div class="field <%= ' field_with_errors' if review.errors[:comment].any? %>">
+   <%= f.label :comment %>
+  <li>
+    <%= f.text_area :comment %>
+  </li>
+  <h5><%= review.errors[:comment][0] %></h5>
+</div>
+
+<div class="field <%= ' field_with_errors' if review.errors[:product_rating].any? %>">
+ <h3>Product Rating: 1-5</h3>
+ <div class="radio-buttons">
+ <%= f.radio_button :product_rating, "1" %>
+ <%= f.label :product_rating, "1" %>
+ <%= f.radio_button :product_rating, "2" %>
+ <%= f.label :product_rating, "2" %>
+ <%= f.radio_button :product_rating, "3" %>
+ <%= f.label :product_rating, "3" %>
+ <%= f.radio_button :product_rating, "4" %>
+ <%= f.label :product_rating, "4" %>
+ <%= f.radio_button :product_rating, "5" %>
+ <%= f.label :product_rating, "5" %>
+ </div>
+ <h5><%= review.errors[:comment][0] %></h5>
+</div>
+
+ <%= f.hidden_field :product_id, :value => review.product_id %>
+
+  <li>
+    <%= f.submit "submit" %>
+  </li>
+
+ <% end %>

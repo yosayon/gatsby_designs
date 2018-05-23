@@ -1,8 +1,10 @@
 <div class="orders-index-container">
  <% @orders.each do |order| %>
-  <div><%= link_to "view this order", user_order_path(current_user,order)%></div>
+  <div><u><%= link_to "view this order", user_order_path(current_user,order)%></u></div>
   <div class="order-id">Order ID: <%= order.id %></div>
   <div class="order-date">Date: <%= order.updated_at %></div>
  <% end %>
+ 
+ <p><%= button_to "back", user_path(current_user), :method => "get" %></p>
 
 </div>

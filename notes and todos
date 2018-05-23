@@ -181,8 +181,11 @@ through products
 /products/popular ---> popular is the overall average rating of a product.
 
 /user/:id  ---> should should links to:
-1. /user/:id/orders
-2. /user/:id/order/:order_id
-3. /user/:id/reviews
-4. /user/:id/review/
+1. /user/:id/orders - ok
+2. /user/:id/order/:order_id  - ok
+3. /user/:id/reviews -ok
+4. /user/:id/review/ -ok
 
+
+user cannot manipulate form field to review a different product
+implement same logic for edit.

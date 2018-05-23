@@ -13,5 +13,10 @@ class Order < ApplicationRecord
    @total.floor
   end
  end
+ 
+ def check_out_order
+  self.update(:checkout => true)
+ end
+ 
   
 end

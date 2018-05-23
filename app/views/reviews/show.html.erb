@@ -1,0 +1,7 @@
+<div class="carts-container">
+   <%= render :partial => 'shared/product_picture', :locals => {:review => @review} %>
+   <%= render :partial => 'shared/review', :locals => {:review => @review }%>
+   <%= button_to "edit", edit_user_review_path(@review.user, @review), :method => 'get' %>
+   <%= button_to "delete", user_review_path(@review.user, @review), :method => 'delete' %>
+   <%= button_to "back", user_reviews_path(@review.user), :method => 'get' %>
+</div>

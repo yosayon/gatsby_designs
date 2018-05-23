@@ -4,6 +4,16 @@
 
 main{
  display: flex;
+ flex-direction: column
+}
+
+.new-review-container{
+ 
+}
+
+.radio-buttons{
+ display: flex;
+ flex-direction: row
 }
 
 #error_explanation h2{
@@ -21,4 +31,22 @@ h5{
  margin: 0;
  color: darkred;
  font-family: "Courier new";
+}
+
+.user_email h1{
+ display: block;
+}
+
+.profile-container{
+ height: 150px;
+ display: flex;
+ flex-flow: column;
+ justify-content: space-between;
+ margin-top: 30px;
+
+}
+.button form {
+ display: block;
+ margin-left: 20px;
+ 
 }
