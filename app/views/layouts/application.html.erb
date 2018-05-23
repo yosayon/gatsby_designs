@@ -13,14 +13,27 @@
  
   <body>
     <header>
-     <%= render 'layouts/logo' %>
-     <%= render 'layouts/navigation' %>
+      
+     <div class="logo-container">
+      <div class="logo">
+      <a href=<%= root_path %>><img src="/assets/logo/lg_lostgeneration.jpeg" alt="Lost Generation"></a>
+      </div> 
+     </div>
+     
+      <%= render 'layouts/navigation' %>
+     
     </header>
+    
     <main>
+      
      <%= yield %>
+     
     </main>
+    
   </body>
   
-  <%= render 'layouts/footer' %>
+   <footer class="footer-container">
+     <p>&copy; Lost Generation </p>
+   </footer>
    
 </html>

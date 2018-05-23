@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
- before_action :authenticate_user, :only => [:show, :update]
- 
+ before_action :authenticate_user, :only => [:show, :update, :index]
  
  def show
   @order = Order.find(params[:id])
@@ -17,7 +16,9 @@ class OrdersController < ApplicationController
  end
  
  private
+ 
  def order_params
   params.require(:order).permit(:user_id)
  end
+ 
 end

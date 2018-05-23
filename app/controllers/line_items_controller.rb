@@ -14,7 +14,7 @@ class LineItemsController < ApplicationController
  end
  
  def update
-  @line_item = LineItem.find_by_id(params[:id])
+  @line_item = LineItem.find(params[:id])
   @line_item.subtract_quantity
   if @line_item.quantity == 0
    current_cart.line_items.destroy(@line_item)

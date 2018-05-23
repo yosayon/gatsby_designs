@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<p>Reviews: <%= @product.reviews.count %></p>
+<p>Average Rating: <%= @product.average_rating%> out of <%= @product.reviews.count %> reviews.</p>
 
 <%= render :partial => 'shared/review', :collection => @product.reviews %>
 

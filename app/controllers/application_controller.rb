@@ -1,22 +1,6 @@
 class ApplicationController < ActionController::Base
  protect_from_forgery with: :exception
- helper_method :current_user, :logged_in?, :current_cart, :current_order, :session_user, :current_product
-
- def current_user
-  @current_user ||= User.find(session[:user_id]) if session[:user_id]
- end
- 
- def logged_in?
-  current_user != nil
- end
- 
- def current_cart
-  logged_in? ? current_user.current_cart : temp_user.current_cart
- end
- 
- def current_order
-  logged_in? ? current_user.current_order : temp_user.current_order
- end
+ helper_method :current_user, :logged_in?, :current_cart, :current_order, :session_user
  
  def require_login
   if !logged_in?
@@ -42,6 +26,26 @@ class ApplicationController < ActionController::Base
  
  private
  
+ def current_user
+  @current_user ||= User.find(session[:user_id]) if session[:user_id]
+ end
+ 
+ def current_cart
+  logged_in? ? current_user.current_cart : temp_user.current_cart
+ end
+ 
+ def current_order
+  logged_in? ? current_user.current_order : temp_user.current_order
+ end
+ 
+ def current_product
+  @current_product ||= Product.find_by_id(session[:product_id])
+ end
+ 
+ def logged_in?
+  current_user != nil
+ end
+
  def find_session_user
   if !logged_in? && session[:temp_id].nil?
    user = User.create_temporary_user
@@ -63,10 +67,6 @@ class ApplicationController < ActionController::Base
   if session_user && @user != session_user || session_user.nil?
   render :file => "#{Rails.root}/public/422.html", :layout => false
   end
- end
- 
- def current_product
-  @current_product ||= Product.find_by_id(session[:product_id])
  end
 
 end

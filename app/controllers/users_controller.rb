@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
  after_action :purge_temp_user_data, :only => [:create], :if => :logged_in?
+ before_action :require_login, :only => [:show]
  
  def new
   @user = User.new

@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
  before_action :find_review, :only => [:show, :edit, :update, :destroy]
+ before_action :require_login
+ before_action :authenticate_user
+ 
  
  def new
   session[:product_id] = Product.find(params[:product_id]).id

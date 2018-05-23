@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
  after_action :purge_temp_user_data, :only => [:create], :if => :logged_in?
  
- 
  def new
   @user = User.new
  end
@@ -27,13 +26,9 @@ class SessionsController < ApplicationController
  end
  
  def destroy
-  #if logged_in?
-   session.delete :user_id
-   session.delete :temp_id
-   redirect_to root_path
-  #else
-  # render :file => "#{Rails.root}/public/422.html", :layout => false
-  #end
+  session.delete :user_id
+  session.delete :temp_id
+  redirect_to root_path
  end
  
  private

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
    end
  
   resources :products, :only => [:index]
+  get '/products/highest_rated', :to => "products#highest_rated"
  
  #nested product and line_items route. A user can create/update/destoy the line_items for the different products they have in their cart  
    resources :products, :only => [:show] do
