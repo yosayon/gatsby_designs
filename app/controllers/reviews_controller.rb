@@ -1,26 +1,20 @@
 class ReviewsController < ApplicationController
  before_action :find_review, :only => [:show, :edit, :update, :destroy]
  before_action :require_login
- before_action :authenticate_user
  
  
  def new
-  session[:product_id] = Product.find(params[:product_id]).id
+  @product = Product.find(params[:product_id])
   @review = @product.reviews.build
  end
  
  def create
-  if Product.find_by_id(params[:product_id]) != current_product
-   render :file => "#{Rails.root}/public/422.html", :layout => false
-  else
-   @review = Review.new(:title => params[:title], :comment => params[:comment], :product_rating => params[:product_rating], :user_id => current_user.id, :product_id => current_product)
+  @review = current_user.reviews.create(review_params)
    if @review.save
     redirect_to @review.product
    else
-    @review = current_product.reviews.build
     render :new
    end
-  end
  end
  
  def index

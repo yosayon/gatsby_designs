@@ -37,11 +37,7 @@ class ApplicationController < ActionController::Base
  def current_order
   logged_in? ? current_user.current_order : temp_user.current_order
  end
- 
- def current_product
-  @current_product ||= Product.find_by_id(session[:product_id])
- end
- 
+
  def logged_in?
   current_user != nil
  end
