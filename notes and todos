@@ -189,3 +189,7 @@ through products
 
 user cannot manipulate form field to review a different product
 implement same logic for edit.
+
+Products.highest_rated ---> order products by highest ratings. 
+need to count each product's average rating 
+product.average_rating 
