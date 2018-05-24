@@ -8,7 +8,7 @@ A mock ecommerce website for an eyewear brand.
 Blog ----> https://yosayonnyc.wordpress.com/2018/05/22/my-first-ror-project-gatsby_designs/
 
 
-Youtube Video ----> https://youtu.be/Usv_Ul8sV-s
+Youtube Video ----> https://youtu.be/aUroASfUuW4
 
 
 ### Ruby Version ----> 2.3.3
