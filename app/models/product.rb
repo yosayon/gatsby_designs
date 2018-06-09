@@ -11,5 +11,9 @@ class Product < ApplicationRecord
  def self.by_highest_rating
   all.sort_by{|product| - product.average_rating}
  end
+ 
+ def self.by_price
+  all.sort_by{|product| product.price}
+ end
 
 end

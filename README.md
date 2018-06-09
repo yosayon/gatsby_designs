@@ -1,4 +1,4 @@
-# Gatbsy Eyewear
+# Gatsby Eyewear
 
 ### Description
 
