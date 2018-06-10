@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
  
  def show
   @order = Order.find(params[:id])
+  respond_to do |f|
+   f.html
+   f.json {render :json => @order}
+  end
  end
  
  def thank_you
@@ -13,7 +17,8 @@ class OrdersController < ApplicationController
  end
  
  def index
-  @orders = current_user.checked_out_orders
+  orders = current_user.checked_out_orders
+  render json: orders
  end
  
  private
