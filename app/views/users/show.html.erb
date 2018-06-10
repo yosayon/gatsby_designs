@@ -1,8 +1,11 @@
-<div class="profile-container">
- <div class="user_email"><h1><%= current_user.email %></h1></div>
- 
- <div id="button-orders"> <%= button_to "View my orders", user_orders_path(current_user), :method => 'get' %> </div>
-
- <div id="button-reviews"><%= button_to "View my reviews", user_reviews_path(current_user), :method => "get" %></div>
- 
- </div>
+<div class="users show">
+   <div class="profile-container">
+    <div class="user_email"><h1><%= current_user.email %></h1></div>
+    <div class="current_user" id="<%= current_user.id %>"></div>
+    <button id="button-orders">View my orders</button>
+      <div id="user-orders"></div>
+      <div id="user-orders-show"></div>
+    <button id="button-reviews">View my reviews</button>
+    <div id="user-reviews"></div>
+    </div>
+</div>
