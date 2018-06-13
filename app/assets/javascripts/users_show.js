@@ -2,30 +2,51 @@ let getOrders = function(orders){
  let id = $(".current_user")[0].id
  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   $.get(`/users/${id}/orders`, function(orders){
-   orders.map(function(order){
-   var order_date  = new Date(order.created_at);
+   orders.data.map(function(order){
+    //console.log(order.attributes["created-at"]);
+   var order_date  = new Date(order.attributes["created-at"]);
     $('#user-orders').append(`<li><a href="/users/${id}/orders/${order.id}">
-    Order Number: ${order.id}: ${order_date.toLocaleDateString("en-US")}</a>
+    Order Number: ${order.id} ${order_date.toLocaleDateString("en-US")}</a>
     </li>`);
    })
- }).done(showOrders)
+ })
+}
+
+let getReviews = function(reviews){
+ let id = $(".current_user")[0].id
+ $.get(`/users/${id}/reviews`, function(reviews){
+  console.log(reviews);
+   reviews.data.forEach(function(review){
+    let newReview = new Review(review)
+    console.log(newReview);
+    let reviewHTML = `
+    <li><a href="/users/${id}/reviews/${newReview.id}">${newReview.title}</a></li>
+    `
+    $("#user-reviews").append(reviewHTML)
+   })
+ })
 }
 
 let attachListeners = function(){
- $("#button-orders").click(function(e){
-  console.log("I just hijacked this button!");
+ $("#button-orders").click(function(){
+  //console.log("I just hijacked this button!");
   if ($("#user-orders").text() === ""){
    getOrders(this)
   }
  })
+ $("#button-reviews").click(function(){
+  if ($("#user-orders").text() === ""){
+   getReviews(this)
+  }
+ })
 }
 
-let showOrders = function(){
- $("#user-orders li a").click(function(e){
-  e.preventDefault();
-  console.log("I just hijacked this user_order_path!");
-  
-  })
+function Review(review){
+ this.id = review.id,
+ this.title = review.attributes.title,
+ this.comment = review.attributes.comment,
+ this.user_id = review.attributes.user_id,
+ this.product_id = review.attributes.product_id
 }
 
 $(".users.show").ready(attachListeners);
