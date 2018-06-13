@@ -21,7 +21,8 @@ class ReviewsController < ApplicationController
   if params[:product_id]
    @reviews = Product.find(params[:product_id]).reviews
   elsif params[:user_id]
-   @reviews = User.find(params[:user_id]).reviews
+   reviews = User.find(params[:user_id]).reviews
+   render json: reviews
   else
    @reviews = Review.all
   end
