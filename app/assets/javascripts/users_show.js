@@ -1,3 +1,8 @@
+function attachListeners(){
+ bindOrderHandlers();
+ bindReviewHandlers();
+}
+
 const bindOrderHandlers = () => {
  let id = $(".current_user")[0].id;
  $("#button-orders").click((e) => {
@@ -33,27 +38,28 @@ Order.prototype.formatIndex = function(){
  return orderHTML;
 }
 
-$(".users.show").ready(bindOrderHandlers)
+const bindReviewHandlers = () =>{
+ let id = $(".current_user")[0].id
+ $("#button-reviews").click((e) => {
+ $.get(`/users/${id}/reviews.json`, (response) => {
+  $('#user-reviews').html('');
+  response.data.forEach(review => {
+   let newReview = new Review(review)
+   let reviewHTML = `
+     <li><a href="/users/${id}/reviews/${newReview.id}">${newReview.title}</a></li>
+     `
+     $("#user-reviews").append(reviewHTML)
+  })
+  })
+ })
+}
 
-// function Review(review){
-//  this.id = review.id,
-//  this.title = review.attributes.title,
-//  this.comment = review.attributes.comment,
-//  this.user_id = review.attributes.user_id,
-//  this.product_id = review.attributes.product_id
-// }
+ function Review(review){
+  this.id = review.id,
+  this.title = review.attributes.title,
+  this.comment = review.attributes.comment,
+  this.user_id = review.attributes.user_id,
+  this.product_id = review.attributes.product_id
+ }
 
-// let getReviews = function(reviews){
-//  let id = $(".current_user")[0].id
-//  $.get(`/users/${id}/reviews`, function(reviews){
-//   console.log(reviews);
-//    reviews.data.forEach(function(review){
-//     let newReview = new Review(review)
-//     //console.log(newReview);
-//     let reviewHTML = `
-//     <li><a href="/users/${id}/reviews/${newReview.id}">${newReview.title}</a></li>
-//     `
-//     $("#user-reviews").append(reviewHTML)
-//    })
-//  })
-// }
+$(".users.show").ready(attachListeners)
