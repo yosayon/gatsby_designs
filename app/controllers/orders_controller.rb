@@ -17,8 +17,11 @@ class OrdersController < ApplicationController
  end
  
  def index
-  orders = current_user.checked_out_orders
-  render json: orders
+  @orders = current_user.checked_out_orders
+  respond_to do |f|
+   f.html
+   f.json {render :json => @orders}
+  end
  end
  
  private
