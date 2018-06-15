@@ -49,7 +49,7 @@ const bindReviewHandlers = () =>{
      <li><a href="/users/${id}/reviews/${newReview.id}">${newReview.title}</a></li>
      `
      $("#user-reviews").append(reviewHTML)
-  })
+   })
   })
  })
 }
