@@ -14,3 +14,26 @@
     <div id="user-reviews-show"></div>
     </div>
 </div>
+
+<script id="order-show-template" type="text/x-handlebars-template">
+ <div class="orders-container">
+  <h3>Order# {{order_id}}</h3>
+  
+  {{#each line_items}}
+  {{displayLineItems this}}
+  {{/each}}
+  
+ <p>Total: <%= @order.total %></p>
+ <p>This order was processed on <%= @order.updated_at %></p>
+ <p><%= link_to "View all orders", user_orders_path(current_user)%></p>
+ 
+</div>
+</script>
+
+<script id="line-item-partial" type="text/x-handlebars-template">
+  <div class="image-shrunk"><a href="{{product_picture_path}}"><img src="/assets/{{product_picture}}"></a>
+  <div class="product-name">{{product_name}}</div>
+  <div class="product-price">{{product_price}}</div>
+  <div class="quantity">Quantity:<{{quantity}}</div>
+ </div>
+</script>
