@@ -3,6 +3,9 @@ function attachListeners(){
  bindReviewHandlers();
 }
 
+const showOrder = function(order){
+}
+
 const bindOrderHandlers = () => {
  let id = $(".current_user")[0].id;
  $("#button-orders").click((e) => {
@@ -13,6 +16,16 @@ const bindOrderHandlers = () => {
     let orderHTML = newOrder.formatIndex();
     $('#user-orders').append(orderHTML);
    })
+   bindOrderShowHandlers();
+  })
+ })
+}
+
+const bindOrderShowHandlers = () => {
+ $('#user-orders li a').click(function(e){
+ e.preventDefault();
+ $.get(`${this.href}.json`, (response) => {
+  console.log(response.data);
   })
  })
 }
