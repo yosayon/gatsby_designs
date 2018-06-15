@@ -20,13 +20,11 @@
   <h3>Order# {{order_id}}</h3>
   
   {{#each line_items}}
-  {{displayLineItems this}}
+  {{>line_item_partial}}
   {{/each}}
   
- <p>Total: <%= @order.total %></p>
- <p>This order was processed on <%= @order.updated_at %></p>
- <p><%= link_to "View all orders", user_orders_path(current_user)%></p>
- 
+ <p>Total: {{total}}</p>
+ <p>This order was processed on {{date}}</p>
 </div>
 </script>
 
