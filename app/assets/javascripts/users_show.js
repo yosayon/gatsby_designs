@@ -1,10 +1,23 @@
 function attachListeners(){
+ handlebarsSetup();
  bindOrderHandlers();
  bindReviewHandlers();
 }
 
 const showOrder = function(order){
+ 
 }
+
+//  <div class="orders-container">
+//   <h3>Order# {{order_id}}</h3>
+  
+//   {{#each line_items}}
+//   {{>line_item_partial}}
+//   {{/each}}
+  
+//  <p>Total: {{total}}</p>
+//  <p>This order was processed on {{date}}</p>
+// </div>
 
 const bindOrderHandlers = () => {
  let id = $(".current_user")[0].id;
@@ -25,7 +38,9 @@ const bindOrderShowHandlers = () => {
  $('#user-orders li a').click(function(e){
  e.preventDefault();
  $.get(`${this.href}.json`, (response) => {
-  console.log(response.data);
+  console.log(response.data)
+  let newOrder = new Order(response.data)
+  console.log(newOrder);
   })
  })
 }
@@ -33,7 +48,9 @@ const bindOrderShowHandlers = () => {
 function Order(order){
  this.id = order.id,
  this.user_id = order.attributes["user-id"],
- this.created_at = order.attributes["created-at"]
+ this.created_at = order.attributes["created-at"],
+ this.line_items = order.relationships["line-items"],
+ this.products = order.relationships["products"]
 }
 
 Order.prototype.formatTime = function(){
@@ -49,6 +66,11 @@ Order.prototype.formatIndex = function(){
   </li>
  `
  return orderHTML;
+}
+
+Order.prototype.orderShowTemplate = function(){
+ let template = Handlebars.compile($("#order-show-template")[0].innerHTML)
+ return template;
 }
 
 const bindReviewHandlers = () =>{
@@ -73,6 +95,10 @@ const bindReviewHandlers = () =>{
   this.comment = review.attributes.comment,
   this.user_id = review.attributes.user_id,
   this.product_id = review.attributes.product_id
+ }
+ 
+ function handlebarsSetup(){
+  Handlebars.registerPartial('recipeDetailsPartial', $("#line-item-partial")[0].innerHTML)
  }
 
 $(".users.show").ready(attachListeners)
