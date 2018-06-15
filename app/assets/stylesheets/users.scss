@@ -38,14 +38,17 @@ h5{
 }
 
 .profile-container{
- height: 150px;
+ height: 1000px;
  display: flex;
  flex-flow: column;
- justify-content: space-between;
  margin-top: 30px;
-
 }
+
 #button-orders, #button-reviews{
- display: block;
  margin-left: 20px;
+}
+
+#user-container{
+ display: flex;
+ flex-flow: row;
 }
