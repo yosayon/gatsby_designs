@@ -52,7 +52,7 @@ Order.prototype.insertIntoPartial = function(){
     product_picture: `${products[i].picture}`,
     product_name: products[i].name,
     product_price: Math.floor(products[i].price),
-    quantity: this.line_items[0].quantity
+    quantity: this.line_items[i].quantity
    }
   line_items.push(obj);
  }
