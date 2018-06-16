@@ -19,9 +19,12 @@
  <div class="orders-container">
   <h3>Order# {{order_id}}</h3>
   
+  <div id="lineitems">
   {{#each line_items}}
    {{>lineItemPartial}}
+  </div>
   {{/each}}
+  
   
  <p>Total: {{total}}</p>
  <p>This order was processed on {{date}}</p>
@@ -29,9 +32,9 @@
 </script>
 
 <script id="line-item-partial" type="text/x-handlebars-template">
-  <div class="image-shrunk"><a href="{{product_picture_path}}"><img src="/assets/{{product_picture}}"></a>
+  <div class="image-shrunk"><a href="{{product_picture_path}}"><img src="/assets{{product_picture}}"></a>
   <div class="product-name">{{product_name}}</div>
   <div class="product-price">{{product_price}}</div>
-  <div class="quantity">Quantity:<{{quantity}}</div>
+  <div class="quantity">Quantity: {{quantity}}</div>
  </div>
 </script>
