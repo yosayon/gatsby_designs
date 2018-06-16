@@ -4,10 +4,6 @@ function attachListeners(){
  bindReviewHandlers();
 }
 
-const showOrder = function(order){
- 
-}
-
 const bindOrderHandlers = () => {
  let id = $(".current_user")[0].id;
  $("#button-orders").click((e) => {
@@ -22,31 +18,16 @@ const bindOrderHandlers = () => {
   })
  })
 }
-//  <div class="orders-container">
-//   <h3>Order# {{order_id}}</h3>
-//   {{#each line_items}}
-//   {{>line_item_partial}}
-//   {{/each}}
-//  <p>Total: {{total}}</p>
-//  <p>This order was processed on {{date}}</p>
-// </div>
-
- // var recipe = {name, description, ingredients, submitAction: 'createRecipe()'}
-
- //  var recipeFormTemplate = document.getElementById("recipe-form-template").innerHTML
- //  var template = Handlebars.compile(recipeFormTemplate)
- //  document.getElementById("main").innerHTML = template(recipe)
 
 const bindOrderShowHandlers = () => {
  $('#user-orders li a').click(function(e){
  e.preventDefault();
  $.get(`${this.href}.json`, (response) => {
   let newOrder = new Order(response.data)
+  console.log(newOrder);
   let template = newOrder.orderShowTemplate();
-  for(let i = 0; i < newOrder.line_items.length; i++){
-   $("#user-orders-show")[0].innerHTML = template({order_id: newOrder.id, line_items: newOrder.line_items})
-  }
-  let results = {order_id: newOrder.id, line_items: newOrder.line_items, product_picture_path: `$.get(/products/${newOrder.line_items})`, }
+  let results = newOrder.insertIntoPartial();
+  $("#user-orders-show")[0].innerHTML = template(results)
   })
  })
 }
@@ -57,6 +38,26 @@ function Order(order){
  this.created_at = order.attributes["created-at"],
  this.line_items = order.relationships["line-items"].data,
  this.products = order.relationships["products"].data
+}
+
+Order.prototype.insertIntoPartial = function(){
+ let order_id = this.id;
+ let products = this.products;
+ let total = this.total();
+ let date = this.formatTime();
+ line_items = [];
+ for(let i = 0; i < products.length; i++){
+   let obj = {
+    product_picture_path: `/products/${products[i].id}`,
+    product_picture: `${products[i].picture}`,
+    product_name: products[i].name,
+    product_price: Math.floor(products[i].price),
+    quantity: this.line_items[0].quantity
+   }
+  line_items.push(obj);
+ }
+ return {order_id, line_items,total,date}
+ console.log(line_items);
 }
 
 Order.prototype.formatTime = function(){
@@ -77,6 +78,15 @@ Order.prototype.formatIndex = function(){
 Order.prototype.orderShowTemplate = function(){
  let template = Handlebars.compile($("#order-show-template")[0].innerHTML)
  return template;
+}
+
+Order.prototype.total = function(){
+ let prices = [];
+ let total = 0;
+  for(let i = 0; i < this.products.length; i++){
+   prices.push(Math.floor(this.products[i].price * this.line_items[i].quantity))
+  }
+  return total = prices.reduce((sum,val) => sum + val);
 }
 
 const bindReviewHandlers = () =>{
@@ -104,10 +114,7 @@ const bindReviewHandlers = () =>{
  }
  
  function handlebarsSetup(){
-  Handlebars.registerHelper('displayLineItems', function(line_item){
-   
-  })
-  Handlebars.registerPartial('lineItemPartial', $("#line-item-partial")[0].innerHTML)
+  Handlebars.registerPartial('lineItemPartial', $("#line-item-partial")[0].innerHTML);
  }
 
 $(".users.show").ready(attachListeners)
