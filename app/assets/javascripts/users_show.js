@@ -57,7 +57,6 @@ Order.prototype.insertIntoPartial = function(){
   line_items.push(obj);
  }
  return {order_id, line_items,total,date}
- console.log(line_items);
 }
 
 Order.prototype.formatTime = function(){
