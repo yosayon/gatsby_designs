@@ -20,7 +20,7 @@ const bindOrderHandlers = () => {
 }
 
 const bindOrderShowHandlers = () => {
- $('#user-orders li a').click(function(e){
+ $('#user-orders li a').hover(function(e){
  e.preventDefault();
  $.get(`${this.href}.json`, (response) => {
   let newOrder = new Order(response.data)
@@ -36,8 +36,8 @@ function Order(order){
  this.id = order.id,
  this.user_id = order.attributes["user-id"],
  this.created_at = order.attributes["created-at"],
- this.line_items = order.relationships["line-items"].data,
- this.products = order.relationships["products"].data
+ this.line_items = order.attributes["line-items"],
+ this.products = order.attributes["products"]
 }
 
 Order.prototype.insertIntoPartial = function(){
@@ -56,7 +56,7 @@ Order.prototype.insertIntoPartial = function(){
    }
   line_items.push(obj);
  }
- return {order_id, line_items,total,date}
+ return {order_id, line_items, total, date}
 }
 
 Order.prototype.formatTime = function(){
@@ -100,6 +100,19 @@ const bindReviewHandlers = () =>{
      `
      $("#user-reviews").append(reviewHTML)
    })
+   bindReviewShowHandlers();
+  })
+ })
+}
+
+const bindReviewShowHandlers = () =>{
+ $('#user-reviews li a').click(function(e){
+ e.preventDefault();
+ $.get(`${this.href}.json`, (response) => {
+  let newReview = new Review(response.data)
+  let template = Handlebars.compile($("#review-show-template")[0].innerHTML);
+  let results = {product_picture_path: `/products/${newReview.product_id}`, product_picture: `${newReview.product_picture}`, product_name: `${newReview.product_name}`, user_email: `${newReview.user_email}`, title: `${newReview.title}`, review: `${newReview.comment}`};
+  $("#user-reviews-show")[0].innerHTML = template(results);
   })
  })
 }
@@ -108,12 +121,22 @@ const bindReviewHandlers = () =>{
   this.id = review.id,
   this.title = review.attributes.title,
   this.comment = review.attributes.comment,
-  this.user_id = review.attributes.user_id,
-  this.product_id = review.attributes.product_id
+  this.user_email = review.attributes.user["email"],
+  this.product_id = review.attributes["product-id"]
+  this.product_name = review.attributes.product["name"]
+  this.product_picture = review.attributes.product["picture"]
  }
+ 
+Review.prototype.reviewShowTemplate = function(){
+ let template = Handlebars.compile($("#review-show-template")[0].innerHTML)
+ return template;
+}
  
  function handlebarsSetup(){
   Handlebars.registerPartial('lineItemPartial', $("#line-item-partial")[0].innerHTML);
  }
+ 
+ $(".users.show").ready(attachListeners)
 
-$(".users.show").ready(attachListeners)
+
+
