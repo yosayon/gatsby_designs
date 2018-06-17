@@ -1,17 +1,20 @@
 <div class="users show">
    <div class="profile-container">
-    <div class="user_email"><h1><%= current_user.email %></h1></div>
-    <div class="current_user" id="<%= current_user.id %>"></div>
-    <button id="button-orders">View my orders</button>
+     <div class="user_email"><h1><%= current_user.email %></h1></div>
+     <div class="current_user" id="<%= current_user.id %>"></div>
     
-    <div id="user-container">
+     <button id="button-orders">View my orders</button>
+     <div id="user-order-container">
        <div id="user-orders"></div>
        <div id="user-orders-show"></div>
      </div>
      
-    <button id="button-reviews">View my reviews</button>
-    <div id="user-reviews"></div>
-    <div id="user-reviews-show"></div>
+     <button id="button-reviews">View my reviews</button>
+     <div id="user-review-container">
+       <div id="user-reviews"></div>
+       <div id="user-reviews-show"></div>
+     </div>
+     
     </div>
 </div>
 
@@ -32,9 +35,20 @@
 </script>
 
 <script id="line-item-partial" type="text/x-handlebars-template">
-  <div class="image-shrunk"><a href="{{product_picture_path}}"><img src="/assets{{product_picture}}"></a>
-  <div class="product-name">{{product_name}}</div>
-  <div class="product-price">{{product_price}}</div>
-  <div class="quantity">Quantity: {{quantity}}</div>
+ <div class="image-shrunk"><a href="{{product_picture_path}}"><img src="/assets{{product_picture}}"></a>
+    <div class="product-name">{{product_name}}</div>
+    <div class="product-price">{{product_price}}</div>
+    <div class="quantity">Quantity: {{quantity}}</div>
+ </div>
+</script>
+
+<script id="review-show-template" type="text/x-handlebars-template">
+ <div class="reviews-container">
+   <div id="review-picture"><a href="{{product_picture_path}}"><img src="/assets{{product_picture}}"></a></div>
+     <div>{{product_name}}</div>
+     <div>{{product_rating}}</div>
+     <div>{{user_email}}</div>
+     <div>Title: {{title}}</div>
+     <div>Review: {{review}}</div>
  </div>
 </script>
