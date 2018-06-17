@@ -109,7 +109,14 @@ const bindReviewShowHandlers = () =>{
  $.get(`${this.href}.json`, (response) => {
   let newReview = new Review(response.data)
   let template = Handlebars.compile($("#review-show-template")[0].innerHTML);
-  let results = {product_picture_path: `/products/${newReview.product_id}`, product_picture: `${newReview.product_picture}`, product_name: `${newReview.product_name}`, user_email: `${newReview.user_email}`, title: `${newReview.title}`, review: `${newReview.comment}`};
+  let results = {
+    product_picture_path: `/products/${newReview.product_id}`, 
+    product_picture: `${newReview.product_picture}`, 
+    product_name: `${newReview.product_name}`, 
+    product_rating: `${newReview.product_rating}`,
+    user_email: `${newReview.user_email}`, 
+    title: `${newReview.title}`, 
+    review: `${newReview.comment}`};
   $("#user-reviews-show")[0].innerHTML = template(results);
   })
  })
@@ -120,9 +127,10 @@ const bindReviewShowHandlers = () =>{
   this.title = review.attributes.title,
   this.comment = review.attributes.comment,
   this.user_email = review.attributes.user["email"],
-  this.product_id = review.attributes["product-id"]
-  this.product_name = review.attributes.product["name"]
-  this.product_picture = review.attributes.product["picture"]
+  this.product_id = review.attributes["product-id"],
+  this.product_name = review.attributes.product["name"],
+  this.product_picture = review.attributes.product["picture"],
+  this.product_rating = review.attributes["product-rating"]
  }
  
 Review.prototype.reviewShowTemplate = function(){
