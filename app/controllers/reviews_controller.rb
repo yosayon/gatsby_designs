@@ -29,6 +29,10 @@ class ReviewsController < ApplicationController
  end
  
  def show
+  respond_to do |f|
+   f.html
+   f.json {render :json => @review}
+  end
  end
  
  def edit
