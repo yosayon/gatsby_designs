@@ -95,9 +95,7 @@ const bindReviewHandlers = () =>{
   $('#user-reviews').html('');
   response.data.forEach(review => {
    let newReview = new Review(review)
-   let reviewHTML = `
-     <li><a href="/users/${id}/reviews/${newReview.id}">${newReview.title}</a></li>
-     `
+   let reviewHTML = `<li><a href="/users/${id}/reviews/${newReview.id}">${newReview.product_name}: ${newReview.title}</a></li>`
      $("#user-reviews").append(reviewHTML)
    })
    bindReviewShowHandlers();
@@ -106,7 +104,7 @@ const bindReviewHandlers = () =>{
 }
 
 const bindReviewShowHandlers = () =>{
- $('#user-reviews li a').click(function(e){
+ $('#user-reviews li a').hover(function(e){
  e.preventDefault();
  $.get(`${this.href}.json`, (response) => {
   let newReview = new Review(response.data)
