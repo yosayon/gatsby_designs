@@ -7,10 +7,6 @@ main{
  flex-direction: column
 }
 
-.new-review-container{
- 
-}
-
 .radio-buttons{
  display: flex;
  flex-direction: row
@@ -48,8 +44,29 @@ h5{
  margin-left: 20px;
 }
 
-#user-container{
+#user-order-container{
  display: flex;
  flex-flow: row;
  justify-content: space-between;
 }
+
+#user-review-container{
+ display: flex;
+ flex-flow: row;
+ justify-content: space-between;
+}
+
+.reviews-container{
+ width: 500px;
+}
+
+#review-picture img{
+ height: 75px;
+}
+
+#review-picture:hover {
+ opacity: 0.5;
+}
+
+
+
