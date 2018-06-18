@@ -56,13 +56,34 @@ Order.prototype.insertIntoPartial = function(){
 
 const Review = function(review){
   this.id = review.id,
+  this.user_id = review.user_id,
   this.title = review.title,
-  this.comment = review.comment
+  this.comment = review.comment,
+  this.product_rating = review.product_rating,
+  this.average_rating = Math.floor(review.product.average_rating),
+  this.product_picture = review.product.picture,
+  this.product_name = review.product.name
  }
  
 Review.prototype.reviewShowTemplate = function(){
  let template = Handlebars.compile($("#review-show-template")[0].innerHTML)
  return template;
+}
+
+Review.prototype.formatIndex = function(){
+ return `<li><a href="/users/${this.user_id}/reviews/${this.id}">${this.product_name}: ${this.title}</a></li>`
+}
+
+Review.prototype.insertIntoPartial = function(){
+ let product_picture_path = `/products/${this.product_id}`
+ let product_picture =  `${this.product_picture}`
+ let product_name = `${this.product_name}`
+ let product_rating = `${this.product_rating}`
+ let average_rating = `${this.average_rating}`
+ let title = `${this.title}`
+ let review = `${this.comment}`
+ 
+ return {product_picture_path, product_picture, product_name, product_rating, average_rating, title, review}
 }
 
 

@@ -23,10 +23,10 @@ const bindOrderShowHandlers = () => {
  $('#user-orders li a').hover(function(e){
  e.preventDefault();
  $.get(`${this.href}.json`, (response) => {
-  let newOrder = new Order(response.order)
+  let newOrder = new Order(response.order);
   let template = newOrder.orderShowTemplate();
   let results = newOrder.insertIntoPartial();
-  $("#user-orders-show")[0].innerHTML = template(results)
+  $("#user-orders-show")[0].innerHTML = template(results);
   })
  })
 }
@@ -36,10 +36,10 @@ const bindReviewHandlers = () =>{
  $("#button-reviews").click((e) => {
  $.get(`/users/${id}/reviews.json`, (response) => {
   $('#user-reviews').html('');
-  response.data.forEach(review => {
-   let newReview = new Review(review)
-   let reviewHTML = `<li><a href="/users/${id}/reviews/${newReview.id}">${newReview.product_name}: ${newReview.title}</a></li>`
-     $("#user-reviews").append(reviewHTML)
+  response.reviews.forEach(review => {
+   let newReview = new Review(review);
+   let reviewHTML = newReview.formatIndex();
+     $("#user-reviews").append(reviewHTML);
    })
    bindReviewShowHandlers();
   })
@@ -50,16 +50,9 @@ const bindReviewShowHandlers = () =>{
  $('#user-reviews li a').hover(function(e){
  e.preventDefault();
  $.get(`${this.href}.json`, (response) => {
-  let newReview = new Review(response)
-  let template = Handlebars.compile($("#review-show-template")[0].innerHTML);
-  let results = {
-    product_picture_path: `/products/${newReview.product_id}`, 
-    product_picture: `${newReview.product_picture}`, 
-    product_name: `${newReview.product_name}`, 
-    product_rating: `${newReview.product_rating}`,
-    user_email: `${newReview.user_email}`, 
-    title: `${newReview.title}`, 
-    review: `${newReview.comment}`};
+  let newReview = new Review(response.review)
+  let template = newReview.reviewShowTemplate();
+  let results = newReview.insertIntoPartial();
   $("#user-reviews-show")[0].innerHTML = template(results);
   })
  })
