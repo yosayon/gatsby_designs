@@ -9,8 +9,8 @@
   </div>
 </div>
 
-<p>Average Rating: <%= @product.average_rating%> out of <%= @product.reviews.count %> reviews.</p>
+<p>Average Rating: <%= @product.average_rating.floor%>(<%= @product.reviews.count %> reviews)</p>
 
 <%= render :partial => 'shared/review', :collection => @product.reviews %>
 
-<u><%= link_to "review this product", new_product_review_path(@product) %></u>
+<button id="button-reviews"><%= link_to "review this product", new_product_review_path(@product) %></button>
