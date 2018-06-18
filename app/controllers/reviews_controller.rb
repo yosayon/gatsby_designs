@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
  def show
   respond_to do |f|
    f.html
-   f.json {render :json => @review, include: ['product', 'product.reviews']}
+   f.json {render :json => @review}
   end
  end
  

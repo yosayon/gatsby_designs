@@ -11,6 +11,7 @@ const bindOrderHandlers = () => {
    $('#user-orders').html('');
    response.data.forEach(order => {
     let newOrder = new Order(order)
+    console.log(newOrder);
     let orderHTML = newOrder.formatIndex();
     $('#user-orders').append(orderHTML);
    })
@@ -24,7 +25,7 @@ const bindOrderShowHandlers = () => {
  e.preventDefault();
  $.get(`${this.href}.json`, (response) => {
   let newOrder = new Order(response.data)
-  console.log(newOrder);
+  console.log(response);
   let template = newOrder.orderShowTemplate();
   let results = newOrder.insertIntoPartial();
   $("#user-orders-show")[0].innerHTML = template(results)
@@ -35,9 +36,7 @@ const bindOrderShowHandlers = () => {
 function Order(order){
  this.id = order.id,
  this.user_id = order.attributes["user-id"],
- this.created_at = order.attributes["created-at"],
- this.line_items = order.attributes["line-items"],
- this.products = order.attributes["products"]
+ this.created_at = order.attributes["created-at"]
 }
 
 Order.prototype.insertIntoPartial = function(){
@@ -107,7 +106,7 @@ const bindReviewShowHandlers = () =>{
  $('#user-reviews li a').hover(function(e){
  e.preventDefault();
  $.get(`${this.href}.json`, (response) => {
-  let newReview = new Review(response.data)
+  let newReview = new Review(response)
   let template = Handlebars.compile($("#review-show-template")[0].innerHTML);
   let results = {
     product_picture_path: `/products/${newReview.product_id}`, 
@@ -125,17 +124,24 @@ const bindReviewShowHandlers = () =>{
  function Review(review){
   this.id = review.id,
   this.title = review.attributes.title,
-  this.comment = review.attributes.comment,
-  this.user_email = review.attributes.user["email"],
-  this.product_id = review.attributes["product-id"],
-  this.product_name = review.attributes.product["name"],
-  this.product_picture = review.attributes.product["picture"],
-  this.product_rating = review.attributes["product-rating"]
+  this.comment = review.attributes.comment
  }
  
 Review.prototype.reviewShowTemplate = function(){
  let template = Handlebars.compile($("#review-show-template")[0].innerHTML)
  return template;
+}
+
+function Product(product){
+ this.id = product.id,
+ this.name = product.attributes.name,
+ this.picture = product.attributes.picture,
+ this.price = product.attributes.price,
+ this.average_rating = Math.floor(product.attributes['average-rating'])
+}
+
+const methods = function(instance){
+ instance.class
 }
  
  function handlebarsSetup(){
