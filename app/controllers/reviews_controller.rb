@@ -4,16 +4,20 @@ class ReviewsController < ApplicationController
  
  
  def new
-  @product = Product.find(params[:product_id])
-  @review = @product.reviews.build
+   @product = Product.find(params[:product_id])
+   @review = @product.reviews.build
+  render :layout => false
  end
  
  def create
   @review = current_user.reviews.create(review_params)
    if @review.save
-    redirect_to @review.product
+    respond_to do |f|
+     f.json {render :json => @review}
+     f.html {redirect_to @review.product}
+    end
    else
-    render :new
+    render :new, :json => [@review, @review.errors]
    end
  end
  
