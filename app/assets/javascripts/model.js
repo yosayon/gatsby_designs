@@ -86,6 +86,12 @@ Review.prototype.insertIntoPartial = function(){
  return {product_picture_path, product_picture, product_name, product_rating, average_rating, title, review}
 }
 
+Review.prototype.renderProductReviewTemplate = function(){
+ return Review.templateForProductReview(this)
+}
+
+
+
 
  
 
