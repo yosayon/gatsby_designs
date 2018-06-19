@@ -9,8 +9,18 @@
   </div>
 </div>
 
-<p>Average Rating: <%= @product.average_rating.floor%>(<%= @product.reviews.count %> reviews)</p>
-
-<%= render :partial => 'shared/review', :collection => @product.reviews %>
+<div id="product-review-container">
+  <%= render :partial => 'shared/review', :collection => @product.reviews %>
+</div>
 
 <button id="button-reviews"><%= link_to "review this product", new_product_review_path(@product) %></button>
+<div id="review-form-container"></div>
+
+<script id="product-review-template" type="text/x-handlebars-template">
+ <div id="review-{{id}}">
+  <div class="review_product_rating">{{product_rating}} stars</div>
+  <div class="user_email">{{email}}</div>
+  <div class="review_title">Title: {{title}} </div>
+  <div class="review_comment">Review: {{comment}}</div>
+ </div>
+</script>

@@ -12,7 +12,7 @@
   <li>
    <%= f.text_field :title %>
   </li>
-  <h5><%= review.errors[:title][0] %></h5>
+  <h5 id="title-error"><%= review.errors[:title][0] %></h5>
  </div>
 
 <div class="field <%= ' field_with_errors' if review.errors[:comment].any? %>">
@@ -20,7 +20,7 @@
   <li>
     <%= f.text_area :comment %>
   </li>
-  <h5><%= review.errors[:comment][0] %></h5>
+  <h5 id="comment-error"><%= review.errors[:comment][0] %></h5>
 </div>
 
 <div class="field <%= ' field_with_errors' if review.errors[:product_rating].any? %>">
@@ -37,7 +37,7 @@
  <%= f.radio_button :product_rating, "5" %>
  <%= f.label :product_rating, "5" %>
  </div>
- <h5><%= review.errors[:comment][0] %></h5>
+ <h5 id="rating-error"><%= review.errors[:comment][0] %></h5>
 </div>
 
  <%= f.hidden_field :product_id, :value => review.product_id %>

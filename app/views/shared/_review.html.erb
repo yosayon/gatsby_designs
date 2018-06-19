@@ -1,8 +1,8 @@
- <br>
+ <div id="review-<%=review.id%>">
  <div class="review_product_rating"><%= review.product_rating %> stars</div>
  <div class="user_email"><%= review.user.email %></div>
  <div class="review_title">Title: <u><%= link_to_if(current_user == review.user, review.title, user_review_path(review.user, review))%></u></div>
  <div class="review_comment">Review: <%= review.comment %></div>
- <br>
+ </div>
 
 
