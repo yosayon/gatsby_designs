@@ -66,7 +66,7 @@ const Review = function(review){
  }
  
 Review.prototype.reviewShowTemplate = function(){
- let template = Handlebars.compile($("#review-show-template")[0].innerHTML)
+ let template = Handlebars.compile($("#review-show-template")[0].innerHTML) || ''
  return template;
 }
 
