@@ -5,7 +5,7 @@ class Product < ApplicationRecord
  scope :has_a_review, -> {where('id IN (SELECT DISTINCT(product_id) FROM reviews)')}
 
  def average_rating
-  self.reviews.empty? ? 0 : reviews.average(:product_rating)
+  self.reviews.empty? ? 0 : reviews.average(:product_rating).floor
  end
  
  def self.by_highest_rating
