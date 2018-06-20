@@ -9,6 +9,9 @@
   </div>
 </div>
 
+<h3><%= @product.average_rating %> stars (<%= @product.reviews.count %> reviews)</h3>
+<br>
+<b><%=%></b>
 <div id="product-review-container">
   <%= render :partial => 'shared/review', :collection => @product.reviews %>
 </div>
