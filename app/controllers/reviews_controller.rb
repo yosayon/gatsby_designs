@@ -13,12 +13,15 @@ class ReviewsController < ApplicationController
   @review = current_user.reviews.create(review_params)
    if @review.save
     respond_to do |f|
-     f.json {render :json => @review}
-     f.html {redirect_to @review.product}
+     f.json {render :json => @review, :status => 201}
+     f.html
     end
    else
-    render :new, :json => [@review, @review.errors]
+    respond_to do |f|
+     f.json { render :json => { :error => @review.errors, :text => @review}, :status => 422 }
+     f.html
    end
+  end
  end
  
  def index
