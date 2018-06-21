@@ -1,7 +1,12 @@
 <div class="products-container">
   <div class="product">
    <div class="product-content">
-     <div class="image-shrunk"><a href=<%= product_path(@product) %>><img src="/assets/<%= @product.picture %>"></a></div>
+     <div class="image-shrunk">
+       <a href=<%= product_path(@product) %>>
+        <img src="/assets/<%= @product.picture %>"> 
+       </a>
+     </div>
+     <div id="backnext"><span id="back"><<</span><span id="next">>></span></div>
      <div class="name"><%= @product.name %></div>
      <div class="price"><%= @product.price.floor %></div>
      <div class="buttons"><%= button_to "Add to Cart", product_line_items_path(@product)%></div>
