@@ -15,8 +15,10 @@
     </div>
   </div>
 
-  <h3><%= @product.average_rating %> stars (<%= @product.reviews.count %> reviews)</h3>
-  <br>
+<h3><%= @product.average_rating %> stars (<%= @product.reviews.count %> reviews)</h3>
+
+<br>
+
 </div> 
 
 
@@ -44,10 +46,11 @@
 </script>
 
 <script id="product-show-template" type="text/x-handlebars-template">
+<div class="products-container">
  <div class="product">
     <div class="product-content">
        <div class="image-shrunk">
-           <a href={{id}}>>
+           <a href={{id}}>
             <img src="/assets/{{picture}}"> 
            </a>
        </div>
@@ -57,10 +60,11 @@
        </div>
        <div class="name">{{name}}</div>
        <div class="price">{{price}}</div>
-       <div class="buttons"><%= button_to "Add to Cart", '/products/{{id}}/line_items'</div>
+       <div class="buttons"><button> "Add to Cart"</button></div>
    </div>
+  </div>
+</div>
      <br>
      <h3>{{average_rating}} stars ({{ reviews_count }} reviews)</h3>
      <br>
- </div>
 </script>
