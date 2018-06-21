@@ -51,7 +51,7 @@ Review.toggleReviewForm = function(form){
    }
   }
  }
-
+ 
 Review.success = function(response){
  console.log("It was a success!!!")
   let newReview = new Review(response.review)
