@@ -62,5 +62,6 @@ Review.success = function(response){
 $(".products.show").ready(() =>{
  Review.templateProductSource = $("#product-review-template").html() || '';
  Review.templateForProductReview = Handlebars.compile(Review.templateProductSource);
+ Product.attachBackNextHandlers();
  Review.getReviewForm();
 })
