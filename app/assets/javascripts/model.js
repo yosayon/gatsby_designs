@@ -97,7 +97,12 @@ const Product = function(product){
  this.picture = product.picture,
  this.average_rating = product.average_rating,
  this.price = product.price,
- this.reviews = product.reviews
+ this.reviews = product.reviews,
+ this.reviews_count = product.reviews.length
+}
+
+Product.prototype.renderProductShowTemplate = function(){
+ return Product.templateForProductShow(this)
 }
 
 

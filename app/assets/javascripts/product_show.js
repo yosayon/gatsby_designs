@@ -1,3 +1,4 @@
+
 Product.attachBackNextHandlers = () => {
  console.log("hitting home")
  $("#back").click(Product.goBack)
@@ -9,7 +10,9 @@ Product.goBack = function(){
  let id = parseInt($("#back").attr("data-id"));
  id === 1 ? id = 1 : id--
  $.get("/products/" + id + ".json", function(data){
-  let product = new Product(data.product)
+  let newProduct = new Product(data.product)
+  let product = newProduct.renderProductShowTemplate();
+  $(".products-container").html(product)
  })
  
 }

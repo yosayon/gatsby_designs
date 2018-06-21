@@ -60,8 +60,16 @@ Review.success = function(response){
 }
 
 $(".products.show").ready(() =>{
- Review.templateProductSource = $("#product-review-template").html() || '';
- Review.templateForProductReview = Handlebars.compile(Review.templateProductSource);
+ compileTemplates();
  Product.attachBackNextHandlers();
  Review.getReviewForm();
 })
+
+const compileTemplates = () => {
+ Product.templateProductSource = $("#product-show-template").html() || '';
+ Product.templateForProductShow = Handlebars.compile(Product.templateProductSource)
+ Review.templateProductSource = $("#product-review-template").html() || '';
+ Review.templateForProductReview = Handlebars.compile(Review.templateProductSource);
+}
+
+

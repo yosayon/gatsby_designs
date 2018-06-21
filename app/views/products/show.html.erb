@@ -1,4 +1,4 @@
-
+<div id="products-show"> 
   <div class="products-container">
     <div class="product">
      <div class="product-content">
@@ -17,10 +17,10 @@
 
   <h3><%= @product.average_rating %> stars (<%= @product.reviews.count %> reviews)</h3>
   <br>
+</div> 
+
+
   <%= will_paginate @reviews %>
-  
-  <div id="data-container"></div>
-  <div id="pagination-container"></div>
   
   <div id="product-review-container">
     <%= render :partial => 'shared/review', :collection => @reviews %>
@@ -28,7 +28,6 @@
  
   <button id="button-reviews"><%= link_to "review this product", new_product_review_path(@product) %></button>
   <div id="review-form-container"></div>
-  
   
 
 <script id="product-review-template" type="text/x-handlebars-template">
@@ -44,4 +43,24 @@
  <b> </b>
 </script>
 
-<script src="js/jquery.pagination.js" type="text/javascript"></script>
+<script id="product-show-template" type="text/x-handlebars-template">
+ <div class="product">
+    <div class="product-content">
+       <div class="image-shrunk">
+           <a href={{id}}>>
+            <img src="/assets/{{picture}}"> 
+           </a>
+       </div>
+       <div id="backnext">
+         <span id="back" data-id="{{id}}"> << </span>
+         <span id="next" data-id="{{id}}"> >> </span>
+       </div>
+       <div class="name">{{name}}</div>
+       <div class="price">{{price}}</div>
+       <div class="buttons"><%= button_to "Add to Cart", '/products/{{id}}/line_items'</div>
+   </div>
+     <br>
+     <h3>{{average_rating}} stars ({{ reviews_count }} reviews)</h3>
+     <br>
+ </div>
+</script>
