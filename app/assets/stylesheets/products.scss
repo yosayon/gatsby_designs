@@ -52,5 +52,22 @@
  opacity: 0.5;
 }
 
+#back:hover{
+ border: 2px solid black;
+ font: black;
+ opacity: 1;
+}
+
+#next:hover{
+ border: 2px solid black;
+ font: black;
+}
+
+#backnext{
+ display: flex;
+ flex-flow: row;
+ justify-content: space-between;
+}
+
 
 
