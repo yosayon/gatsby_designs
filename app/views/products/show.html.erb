@@ -1,32 +1,35 @@
-<div class="products-container">
-  <div class="product">
-   <div class="product-content">
-     <div class="image-shrunk">
-       <a href=<%= product_path(@product) %>>
-        <img src="/assets/<%= @product.picture %>"> 
-       </a>
+
+  <div class="products-container">
+    <div class="product">
+     <div class="product-content">
+       <div class="image-shrunk">
+         <a href=<%= product_path(@product) %>>
+          <img src="/assets/<%= @product.picture %>"> 
+         </a>
+       </div>
+       <div id="backnext"><span id="back" data-id="<%=@product.id%>"><<</span><span id="next" data-id="<%=@product.id%>">>></span></div>
+       <div class="name"><%= @product.name %></div>
+       <div class="price"><%= @product.price.floor %></div>
+       <div class="buttons"><%= button_to "Add to Cart", product_line_items_path(@product)%></div>
      </div>
-     <div id="backnext"><span id="back"><<</span><span id="next">>></span></div>
-     <div class="name"><%= @product.name %></div>
-     <div class="price"><%= @product.price.floor %></div>
-     <div class="buttons"><%= button_to "Add to Cart", product_line_items_path(@product)%></div>
-   </div>
+    </div>
   </div>
-</div>
 
-<h3><%= @product.average_rating %> stars (<%= @product.reviews.count %> reviews)</h3>
-<br>
-<%= will_paginate @reviews %>
-
-<div id="data-container"></div>
-<div id="pagination-container"></div>
-
-<div id="product-review-container">
-  <%= render :partial => 'shared/review', :collection => @reviews %>
-</div>
-
-<button id="button-reviews"><%= link_to "review this product", new_product_review_path(@product) %></button>
-<div id="review-form-container"></div>
+  <h3><%= @product.average_rating %> stars (<%= @product.reviews.count %> reviews)</h3>
+  <br>
+  <%= will_paginate @reviews %>
+  
+  <div id="data-container"></div>
+  <div id="pagination-container"></div>
+  
+  <div id="product-review-container">
+    <%= render :partial => 'shared/review', :collection => @reviews %>
+  </div>
+ 
+  <button id="button-reviews"><%= link_to "review this product", new_product_review_path(@product) %></button>
+  <div id="review-form-container"></div>
+  
+  
 
 <script id="product-review-template" type="text/x-handlebars-template">
  <div id="review-{{id}}">
