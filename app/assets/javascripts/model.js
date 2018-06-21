@@ -91,6 +91,15 @@ Review.prototype.renderProductReviewTemplate = function(){
  return Review.templateForProductReview(this)
 }
 
+const Product = function(product){
+ this.id = product.id,
+ this.name = product.name,
+ this.picture = product.picture,
+ this.average_rating = product.average_rating,
+ this.price = product.price,
+ this.reviews = product.reviews
+}
+
 
 
 
