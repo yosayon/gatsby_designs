@@ -8,8 +8,10 @@ class ProductsController < ApplicationController
   end
  end
  
+ 
  def show
   @product = Product.find_by_id(params[:id])
+  @reviews = Review.where(:product_id => @product.id ).paginate(:page => params[:page], :per_page => 5)
   respond_to do |f|
    f.html
    f.json {render :json => @product}
