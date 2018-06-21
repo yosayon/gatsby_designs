@@ -48,20 +48,40 @@ h5{
  display: flex;
  flex-flow: row;
  justify-content: space-between;
+ height: 300px;
+}
+
+#lineitems{
+ display: flex;
+ flex-flow: row;
+ justify-content: space-evenly;
+}
+
+#orders-container{
+ display: flex;
+ flex-flow: row;
+}
+
+#order-picture img{
+ height: 50px;
+}
+#order-picture:hover{
+ opacity: 0.5;
 }
 
 #user-review-container{
  display: flex;
  flex-flow: row;
  justify-content: space-between;
+ height: 500px;
 }
 
-.reviews-container{
- width: 500px;
+#user-reviews-show{
+ width: 300px;
 }
 
 #review-picture img{
- height: 75px;
+ height: 50px;
 }
 
 #review-picture:hover {
