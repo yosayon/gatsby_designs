@@ -1,4 +1,9 @@
-function attachListeners(){
+function handlebarsSetup(){
+  Handlebars.registerPartial('lineItemPartial', $("#line-item-partial")[0].innerHTML);
+ }
+ 
+ 
+ function attachListeners(){
  handlebarsSetup();
  bindOrderHandlers();
  bindReviewHandlers();
@@ -36,6 +41,7 @@ const bindReviewHandlers = () =>{
  $("#button-reviews").click((e) => {
  $.get(`/users/${id}/reviews.json`, (response) => {
   $('#user-reviews').html('');
+  console.log(response.reviews)
   response.reviews.forEach(review => {
    let newReview = new Review(review);
    let reviewHTML = newReview.formatIndex();
@@ -57,10 +63,8 @@ const bindReviewShowHandlers = () =>{
   })
  })
 }
+ 
 
- function handlebarsSetup(){
-  Handlebars.registerPartial('lineItemPartial', $("#line-item-partial")[0].innerHTML);
- }
  
  $(".users.show").ready(attachListeners)
 
