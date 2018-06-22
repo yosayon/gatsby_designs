@@ -2,69 +2,76 @@
   <div class="products-container">
     <div class="product">
      <div class="product-content">
-       <div class="image-shrunk">
-         <a href=<%= product_path(@product) %>>
-          <img src="/assets/<%= @product.picture %>"> 
-         </a>
-       </div>
-       <div id="backnext"><span id="back" data-id="<%=@product.id%>"><<</span><span id="next" data-id="<%=@product.id%>">>></span></div>
-       <div class="name"><%= @product.name %></div>
-       <div class="price"><%= @product.price.floor %></div>
-       <div class="buttons"><%= button_to "Add to Cart", product_line_items_path(@product)%></div>
+        <div class="image-shrunk">
+            <a href=<%= product_path(@product) %>>
+            <img src="/assets/<%= @product.picture %>">
+            </a>
+        </div>
+        <div id="backnext"><span id="back" data-id="<%=@product.id%>"><<</span><span id="next" data-id="<%=@product.id%>">>></span></div>
+        <div class="name"><%= @product.name %></div>
+        <div class="price"><%= @product.price.floor %></div>
+        <div class="buttons"><button id="button-add-to-cart" data-id="<%=@product.id%>">Add to Cart</button></div>
+        <content><h5 id="added">Added!</h5></content>
      </div>
     </div>
   </div>
-
-<h3><%= @product.average_rating %> stars (<%= @product.reviews.count %> reviews)</h3>
-
-<br>
-
 </div> 
 
 
-  <%= will_paginate @reviews %>
-  
-  <div id="product-review-container">
-    <%= render :partial => 'shared/review', :collection => @reviews %>
-  </div>
+<div id ="product-reviews-container">
  
-  <button id="button-reviews"><%= link_to "review this product", new_product_review_path(@product) %></button>
-  <div id="review-form-container"></div>
-  
+   <div>
+    <h3><%= @product.average_rating %> stars (<%= @product.reviews.count %> reviews)</h3>
+     <br>
+     <button id="button-reviews" data-id="<%=@product.id%>">review this product</button>
+     <br>
+     <div id="review-form-container"></div>
+   </div>
+   <div id="product-review-container">
+     <%= render :partial => 'shared/review', :collection => @product.reviews %>
+   </div>
+</div>  
 
 <script id="product-review-template" type="text/x-handlebars-template">
+<br>
  <div id="review-{{id}}">
   <div class="review_product_rating">{{product_rating}} stars</div>
   <div class="user_email">{{email}}</div>
   <div class="review_title">Title: {{title}} </div>
   <div class="review_comment">Review: {{comment}}</div>
  </div>
-</script>
-
-<script id="review-page-template" type="text/x-handlebars-template">
- <b> </b>
+ <br>
 </script>
 
 <script id="product-show-template" type="text/x-handlebars-template">
-<div class="products-container">
- <div class="product">
-    <div class="product-content">
-       <div class="image-shrunk">
-           <a href={{id}}>
-            <img src="/assets/{{picture}}"> 
-           </a>
-       </div>
-       <div id="backnext">
-         <span id="back" data-id="{{id}}"> << </span>
-         <span id="next" data-id="{{id}}"> >> </span>
-       </div>
-       <div class="name">{{name}}</div>
-       <div class="price">{{price}}</div>
-       <div class="buttons"><button> "Add to Cart"</button></div>
-   </div>
+  <div id="products-show"> 
+    <div class="products-container">
+      <div class="product">
+        <div class="product-content">
+          <div class="image-shrunk">
+            <a href={{id}}><img src="/assets/{{picture}}"></a>
+          </div>
+          <div id="backnext">
+             <span id="back" data-id="{{id}}"> << </span>
+             <span id="next" data-id="{{id}}"> >> </span>
+          </div>
+          <div class="name">{{name}}</div>
+          <div class="price">{{price}}</div>
+          <div class="buttons"><button id ="button-add-to-cart" data-id="{{id}}"> Add to Cart </button></div>
+          <content><h5 id="added">Added!</h5></content>
+        </div>
+      </div>
+    </div>
   </div>
+<div id ="product-reviews-container">
+   <div>
+      <h3>{{average_rating}} stars ({{reviews_count}} reviews)</h3>
+      <br>
+      <button id="button-reviews" data-id="{{id}}">review this product</button>
+      <br>
+      <div id="review-form-container"></div>
+    </div>
+    <div id="product-review-container"></div>
 </div>
-     <br>
-     <h3>{{average_rating}} stars ({{ reviews_count }} reviews)</h3>
-     <br>
+ 
 </script>
