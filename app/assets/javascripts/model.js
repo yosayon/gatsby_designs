@@ -57,17 +57,17 @@ Order.prototype.insertIntoPartial = function(){
 const Review = function(review){
   this.id = review.id,
   this.user_id = review.user_id,
-  this.email = review.user.email,
+  this.email = review.email,
   this.title = review.title,
   this.comment = review.comment,
   this.product_rating = review.product_rating,
-  this.average_rating = Math.floor(review.product.average_rating),
+  this.average_rating = review.average_rating,
   this.product_picture = review.product.picture,
   this.product_name = review.product.name
  }
  
 Review.prototype.reviewShowTemplate = function(){
- let template = Handlebars.compile($("#review-show-template")[0].innerHTML) || ''
+ let template = Handlebars.compile($("#review-show-template")[0].innerHTML);
  return template;
 }
 
