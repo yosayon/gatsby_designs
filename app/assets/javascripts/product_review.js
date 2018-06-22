@@ -1,8 +1,8 @@
 Review.getReviewForm = () => {
- $("#button-reviews a").click(function(e){
-  e.preventDefault();
-  let url = this.href
-  $.get(`${this.href}`, (response) => {
+ $("#button-reviews").click(function(e){
+  let id = parseInt($("#button-reviews").attr("data-id"));
+  let url = `/products/${id}/reviews/new`
+  $.get(url, (response) => {
    let form = response;
    $("#review-form-container")[0].innerHTML = form
    Review.submitReview(form)
@@ -16,7 +16,7 @@ Review.submitReview = function(form){
    let $form = $(this);
    let action = `${$form.attr("action")}.json`;
    let params = $form.serialize();
-   let posting = $.post(action, params)
+   $.post(action, params)
    .success(Review.toggleReviewForm(form),Review.success)
    .fail(Review.toggleReviewForm(form), Review.fail)
   })
@@ -53,22 +53,31 @@ Review.toggleReviewForm = function(form){
  }
  
 Review.success = function(response){
- console.log("It was a success!!!")
   let newReview = new Review(response.review)
   let review = newReview.renderProductReviewTemplate();
-  $("#product-review-container").append(review)
+  $("#product-review-container").prepend(review)
 }
 
 const compileTemplates = () => {
- Product.templateProductSource = $("#product-show-template").html() || '';
+ Product.templateProductSource = $("#product-show-template").html() || ''
  Product.templateForProductShow = Handlebars.compile(Product.templateProductSource)
- Review.templateProductSource = $("#product-review-template").html() || '';
- Review.templateForProductReview = Handlebars.compile(Review.templateProductSource);
+ Review.templateProductSource = $("#product-review-template").html() || ''
+ Review.templateForProductReview = Handlebars.compile(Review.templateProductSource)
+}
+
+Product.addToCart = () =>{
+ $("#button-add-to-cart").click(function(){
+  let id = parseInt($("#button-add-to-cart").attr("data-id"))
+  $.post(`/products/${id}/line_items`)
+  $("#added").toggle('fast')
+ })
+ 
 }
 
 $(".products.show").ready(() => {
  compileTemplates();
  Review.getReviewForm();
+ Product.addToCart();
 })
 
 
