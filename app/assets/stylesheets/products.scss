@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* products#index page css */
+#products-show{
+ display: flex;
+ 
+}
 .products-container {
  display: flex;
  justify-content: space-around;
@@ -19,6 +23,7 @@
  display: flex;
  justify-content: center;
  flex-direction: column;
+ align-items: center;
 }
 
 .product img{
@@ -63,10 +68,16 @@
 }
 
 #backnext{
+ width: 350px;
  display: flex;
  flex-flow: row;
  justify-content: space-between;
 }
 
+#added{
+ z-index: -1;
+ font: red;
+ display: none;
+}
 
 
