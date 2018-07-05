@@ -67,9 +67,7 @@ A mock ecommerce website for an eyewear brand inspired by the Lost Generation of
 
 
 
-
-
-
+## Blog and Video:
 
 Blog ----> https://yosayonnyc.wordpress.com/2018/05/22/my-first-ror-project-gatsby_designs/
 
